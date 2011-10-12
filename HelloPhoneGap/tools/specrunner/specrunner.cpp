@@ -106,9 +106,9 @@ void HeadlessSpecRunner::timerEvent(QTimerEvent *event)
     if (hasElement(".runner.failed")) {
         QWebElement desc = m_page.mainFrame()->findFirstElement(".description");
         std::cout << "FAIL: " << qPrintable(desc.toPlainText()) << std::endl;
-        //m_page.mainFrame()->addToJavaScriptWindowObject("debug", this);
-        //m_page.mainFrame()->evaluateJavaScript(DUMP_MSG);
-        //QDesktopServices::openUrl(m_page.mainFrame()->url());
+        m_page.mainFrame()->addToJavaScriptWindowObject("debug", this);
+        m_page.mainFrame()->evaluateJavaScript(DUMP_MSG);
+        QDesktopServices::openUrl(m_page.mainFrame()->url());
         QApplication::instance()->exit(1);
         return;
     }
@@ -135,5 +135,6 @@ int main(int argc, char** argv)
     HeadlessSpecRunner runner;
     runner.load(QString::fromLocal8Bit(argv[1]));
     return app.exec();
+    return 0;
 }
 

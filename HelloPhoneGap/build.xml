@@ -39,9 +39,12 @@
 
 <!-- extension targets. Uncomment the ones where you want to do custom work
      in between standard targets -->
-<!--
     <target name="-pre-build">
+        <exec executable="tools/specrunner/specrunner">
+            <arg value="../../assets/www/SpecRunner.html"/>   
+        </exec>
     </target>
+<!--
     <target name="-pre-compile">
     </target>
 

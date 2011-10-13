@@ -9,7 +9,7 @@ describe("nextStop", function() {
 		expect (nextStop(scheduleArray, 30)).toEqual(60);
 		expect (nextStop(scheduleArray, 61)).toEqual(120);
 		expect (nextStop(scheduleArray, 120)).toEqual(120);
-		expect (nextStop(scheduleArray, 0)).toEqual(50000);
+		expect (nextStop(scheduleArray, 0)).toEqual(0);
 		expect (nextStop(scheduleArray, 1)).toEqual(1);
 		expect (nextStop(scheduleArray, 1439)).toEqual(1439);
 		expect (nextStop(scheduleArray, 1440)).toEqual(1440);

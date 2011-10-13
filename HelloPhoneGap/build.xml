@@ -40,11 +40,8 @@
 <!-- extension targets. Uncomment the ones where you want to do custom work
      in between standard targets -->
     <target name="-pre-build">
-        <exec executable="tools/specrunner/specrunner">
-            <arg value="export DISPLAY=:1"/>   
-        </exec>
-        <exec executable="tools/specrunner/specrunner">
-            <arg value="../../assets/www/SpecRunner.html"/>   
+        <exec executable="tools/specrunner/specrunner" failonerror="true">
+            <arg value="assets/www/SpecRunner.html"/> 
         </exec>
     </target>
 <!--

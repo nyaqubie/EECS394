@@ -40,10 +40,28 @@
 <!-- extension targets. Uncomment the ones where you want to do custom work
      in between standard targets -->
     <target name="-pre-build">
-        <exec executable="tools/specrunner/specrunner" failonerror="true">
-            <arg value="assets/www/SpecRunner.html"/> 
-        </exec>
+        <condition property="winexecute" >
+            <equals arg1="${os}" arg2="windows" />
+        </condition>
+        <condition property="linexecute" >
+            <equals arg1="${os}" arg2="linux" />
+        </condition>
+        <antcall target = "browserlaunch" />
+        <antcall target = "specrunnerlaunch" />
     </target>
+	
+	<target name="browserlaunch" if="winexecute"> 
+		<exec executable="${browser}">
+			<arg value="assets/www/SpecRunner.html"/> 
+		</exec>
+	</target>
+
+	<target name="specrunnerlaunch" if="linexecute"> 
+		<exec executable="tools/specrunner/specrunner" failonerror="true">
+			<arg value="assets/www/SpecRunner.html"/> 
+		</exec>
+	</target>
+
 <!--
     <target name="-pre-compile">
     </target>

@@ -26,6 +26,7 @@
 
          -->
     <property file="build.properties" />
+	<property file="ant.properties" />
 
     <!-- The default.properties file is created and updated by the 'android'
          tool, as well as ADT.

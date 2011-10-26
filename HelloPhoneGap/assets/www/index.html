@@ -2,35 +2,18 @@
 <html>
 	<head>
 		<title>PhoneGap</title>
-		<script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js">
-		</script>   
-		     
-		<script type="text/javascript" charset="utf-8">
-			function onLoad(){
-				document.addEventListener("deviceready", onDeviceReady, false);
-			} 
-			    
-			function onDeviceReady(){
-				navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);    
-			}
-			    
-			function onSuccess(acceleration) {
-				alert('Acceleration X: ' + acceleration.x + '\n' +
-				'Acceleration Y: ' + acceleration.y + '\n' +
-				'Acceleration Z: ' + acceleration.z + '\n' +
-				'Timestamp: '      + acceleration.timestamp + '\n');
-			};
-			
-			function onError() {
-				alert('onError!');
-			}
-			
-
-		</script>
+		<script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
+		<link href="stylesheet.css" rel="stylesheet" type="text/css" />    
 	</head>
-	
-	<body onload="onLoad();">
-		<h1>Welcome to PhoneGap</h1>
-		<h2>Edit assets/www/index.html</h2>
+
+	<body>
+		<a href='nearest.html'>Neeearest Stop</a>
+		<br />
+		<a href='nearest.html' class='button'>Neeearest Stop</a>
+		<br />
+		<a href='lookup.html' class='button'>Look Up Stop</a>
+		<br />
+		<a href='navigate.html' class='button'>Navigate</a>
+		<br />
 	</body>
 </html>

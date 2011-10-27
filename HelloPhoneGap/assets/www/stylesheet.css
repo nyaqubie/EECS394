@@ -31,4 +31,5 @@ a.button {
 	text-decoration:none;
     background: purple;
     color: #fff;
+    border: 2px solid black;
     }

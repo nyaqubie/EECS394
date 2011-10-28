@@ -73,7 +73,7 @@ function getTimeUntilNextBusDemo(stopList){
 		}
 	}
 	
-	return stopList[0].getHours() + ":" + stopList[0].getMinutes() + " Tomorrow";
+	return stopList[0].getHours() + ":" + stopList[0].getMinutes();
 }
 
 function selectedRedirect(selectObject){

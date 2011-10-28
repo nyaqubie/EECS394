@@ -4,25 +4,66 @@
 		<title>PhoneGap</title>
 		<script type="text/javascript" charset="utf-8" src="phonegap-1.1.0.js"></script>
 		<script type="text/javascript" charset="utf-8" src="busapp.js"></script>
-		<script type="text/javascript" charset="utf-8" src="EvanstonLoopGeolocs.js"></script>		
-		<link href="stylesheet.css" rel="stylesheet" type="text/css" />    
+		<script type="text/javascript" charset="utf-8" src="stopsdemo.js"></script>
+
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>		
+		<!--<link href="stylesheet.css" rel="stylesheet" type="text/css" />    -->
 	</head>
 
 	<body>
-	<h1>Campus Loop:</h1>
-	<select>
-		<option>Library/Norris Center</option>
-		<option>Fisk Hall</option>
-		<option>Weber Arch</option>
-		<option>Jacobs Center</option>
-		<option>Tech Institute</option>
-		<option>Patten Gym</option>
-		<option>SPAC</option>
-		<option>Sheridan/Noyes</option>
-		<option>Campus Drive/Annenberg</option>
-	</select>
 	
-	<br />
+	<div data-role="page" id="north-bound" data-theme="b">
+		<div data-role="header" data-theme="a">
+			<a href="index.html" data-icon="arrow-l" rel="external">Back</a>
+			<h1>Look Up Stop</h1>
+			<div data-role="navbar" >
+				<ul>
+					<li><a href="#north-bound" class="ui-btn-active">North-Bound</a></li>
+					<li><a href="#south-bound">South-Bound</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div data-role="content" data-theme="b">		
+			<ul data-role="listview" data-theme="g" data-filter="true">
+			<li data-role="list-divider"> Intercampus </li>
+				<script type="text/javascript"> listStopsinOptionsFormatDemo(icnbstops); </script>
+			</ul>
+		</div>
+		
+		<div data-role="footer" data-theme="a">
+			<h4>This is a demo version of the App</h4>
+		</div>
+	</div>
+	
+	<div data-role="page" id="south-bound" data-theme="b">
+		<div data-role="header" data-theme="a">
+			<a href="index.html" data-icon="arrow-l" rel="external">Back</a>
+			<h1>Look Up Stop</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#north-bound" data-direction="reverse" >North-Bound</a></li>
+					<li><a href="#south-bound" class="ui-btn-active">South-Bound</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div data-role="content" data-theme="b">	
+			<ul data-role="listview" data-theme="g" data-filter="true">
+				<li data-role="list-divider"> Campus Loop </li>
+				<script type="text/javascript"> listStopsinOptionsFormatDemo(clstops); </script>
+			</ul>
+		</div>
+		
+		<div data-role="footer" data-theme="a">
+			<h4>This is a demo version of the App</h4>
+		</div>
+	</div>
+	
+	
+	
 	
 	<body>
 		<select onChange="selectedRedirect(this)">
@@ -31,9 +72,5 @@
 				listStopsinOptionsFormat();
 			</script>
 		</select>
-		
-		<script type="text/javascript">
-			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-		</script>
 	</body>
 </html>

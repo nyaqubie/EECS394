@@ -25,7 +25,7 @@ describe("distanceBetweenCoords", function() {
 	it("", function() {
 		var stop5 = new stop("Tech Institute","42.057944","-87.677105",["12:25:00 AM","01:00:00 AM","01:35:00 AM","02:10:00 AM","02:45:00 AM","06:05:00 PM","06:40:00 PM","07:15:00 PM","07:50:00 PM","08:25:00 PM","09:30:00 PM","10:05:00 PM","10:40:00 PM","11:15:00 PM","11:50:00 PM"]);
 		var stop6 = new stop("Noyes/Sherman","42.058494","-87.681445",["12:27:00 AM","01:02:00 AM","01:37:00 AM","02:12:00 AM","02:47:00 AM","06:07:00 PM","06:42:00 PM","07:17:00 PM","07:52:00 PM","08:27:00 PM","09:32:00 PM","10:07:00 PM","10:42:00 PM","11:17:00 PM","11:52:00 PM"]);
-		distanceBetweenCoords(stop5.geoloc, stop6.geoloc)
+		console.log(distanceBetweenCoords(stop5.geoloc, stop6.geoloc))
 	});
 });
 

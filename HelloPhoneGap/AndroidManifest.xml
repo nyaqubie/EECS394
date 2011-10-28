@@ -2,7 +2,7 @@
 <manifest android:versionCode="1"
 	xmlns:android="http://schemas.android.com/apk/res/android" package="com.phonegap.helloworld"
 	android:versionName="1.0">
-	<uses-sdk android:minSdkVersion="8" />
+	<uses-sdk android:minSdkVersion="10" />
 
 	<supports-screens android:largeScreens="true"
 		android:normalScreens="true" android:smallScreens="true"

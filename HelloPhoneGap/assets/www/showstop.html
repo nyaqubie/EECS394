@@ -8,14 +8,25 @@
 	</head>
 
 	<body>
-		<h1>Stop number 
-		<script type="text/javascript">
-			var stopnumber = getQueryVariable("stop");
-			document.write(stopnumber)
-		</script>
-		
+		<h1>Stop name: 
+			<script type="text/javascript">
+				var stopnumber = getQueryVariable("stop");
+				document.write(stops[stopnumber].name)
+			</script>
 		</h1>
-		<!-- This is still missing some javascript functions... it will do the following once complete:  -->		
+		
+		<h1>Stop times:
+			<script type="text/javascript">
+				document.write(stops[stopnumber].times)
+			</script>
+		</h1>		
+		
+		<h1>Next stop:
+			<script type="text/javascript">
+				document.write(getTimeUntilNextBus(stops[stopnumber].times))
+			</script>
+			 minutes
+		</h1>
 		<!-- Get distance to stop -->
 		<!-- Get arrival time of next bus -->
 	</body>

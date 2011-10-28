@@ -1,6 +1,6 @@
 //Bus stop initialization
 var stop1 = new stop("Noyes","latitude","longitude",["06:40:00 PM","06:45:00 PM","06:57:00 PM"]);
-var stop2 = new stop("Yesno","geolocstring",["10:34:00 PM","10:39:00 PM"]);
+var stop2 = new stop("Yesno","latitude","longitude",["10:34:00 PM","10:39:00 PM"]);
 var stops = [stop1,stop2];
 
 function stop(name, latitude, longitude, times){
@@ -17,21 +17,9 @@ function stop(name, latitude, longitude, times){
 	}
 }
 
-/*function getStops(){
-	//This is a placeholder until we have the actual functionality to get the stops from the CSV file
-	//It will eventually just return a list of the stops
-	var stops = new Array();
-	stops[0] = "";
-	stops[1] = "Stop1";
-	stops[2] = "Stop2";
-	return stops;
-}*/
-
-function getTimeUntilNextBus(stopList){
-	var now = new Date();
-
+function getTimeUntilNextBus(curtime, stopList){
 	for (i in stopList){
-		difference = (stopList[i] - now)/1000/60
+		difference = (stopList[i] - curtime)/1000/60
 		if (difference>0){
 			return difference 
 		}
@@ -40,7 +28,7 @@ function getTimeUntilNextBus(stopList){
 	tomorrowStop = stopList[0]
 	tomorrowStop.setDate(tomorrowStop.getDate()+1)
 	
-	return (tomorrowStop - now)/1000/60
+	return (tomorrowStop - curtime)/1000/60
 }
 
 function listStopsinOptionsFormat(){

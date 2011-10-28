@@ -23,11 +23,9 @@
 		
 		<h1>Next stop:
 			<script type="text/javascript">
-				document.write(getTimeUntilNextBus(stops[stopnumber].times))
+				document.write(getTimeUntilNextBus(new Date(), stops[stopnumber].times))
 			</script>
 			 minutes
 		</h1>
-		<!-- Get distance to stop -->
-		<!-- Get arrival time of next bus -->
 	</body>
 </html>

@@ -50,6 +50,32 @@ function listStopsinOptionsFormat(){
 	}
 }
 
+function listStopsinOptionsFormatDemo(stopList){
+	//This function takes the stops and prints them out as a list of options tags (for the drop-down menu)
+	
+	for (i in stopList){
+		document.write("<li>");
+		document.write(stopList[i].name);
+		document.write(" - Next bus: ");
+
+		document.write(getTimeUntilNextBusDemo(stopList[i].times));
+		document.write("</li>");
+	}
+}
+
+function getTimeUntilNextBusDemo(stopList){
+	var now = new Date();
+	
+	for (i in stopList){
+		difference = (stopList[i] - now)/1000/60
+		if (difference>0 && difference < 2*60){
+			return  Math.round(difference) + " minutes";
+		}
+	}
+	
+	return stopList[0].getHours() + ":" + stopList[0].getMinutes() + " Tomorrow";
+}
+
 function selectedRedirect(selectObject){
 	//This function redirects the app to the showstop page, and appends the stop ID
 	//This is run when the dropdown menu changes

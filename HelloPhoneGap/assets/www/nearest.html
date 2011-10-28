@@ -5,45 +5,10 @@
 		<script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
 		<script type="text/javascript" charset="utf-8" src="busapp.js"></script>
 		<link href="stylesheet.css" rel="stylesheet" type="text/css" />   
-		<script type="text/javascript">
-		// Wait for PhoneGap to load
-	    //
-	    document.addEventListener("deviceready", onDeviceReady, false);
-	
-	    var watchID = null;
-	
-	    // PhoneGap is ready
-	    //
-	    function onDeviceReady() {
-	        // Update every 3 seconds
-	        var options = { frequency: 3000 };
-	        watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
-	    }
-	
-	    // onSuccess Geolocation
-	    //
-	    function onSuccess(position) {
-	        var element = document.getElementById('geolocation');
-	        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
-	                            'Longitude: ' + position.coords.longitude     + '<br />' +
-	                            '<hr />'      + element.innerHTML;
-	    }
-	
-	    // onError Callback receives a PositionError object
-	    //
-	    function onError(error) {
-	        alert('code: '    + error.code    + '\n' +
-	              'message: ' + error.message + '\n');
-	    }
-	    </script>
 	</head>
 
 	<body>
-	<h1>The current position is
-	<script type="text/javascript">
-	document.write(watchID);
-	</script>
-	</h1>
+	<h1>The current position is:</h1>
 	<h1>Nearest stop:</h1>
 	<h1>Next bus arrives in:</h1>
 	<h1>Time to walk to stop:</h1>

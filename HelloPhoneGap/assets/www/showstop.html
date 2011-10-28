@@ -4,6 +4,10 @@
 		<title>PhoneGap</title>
 		<script type="text/javascript" charset="utf-8" src="phonegap-1.1.0.js"></script>
 		<script type="text/javascript" charset="utf-8" src="busapp.js"></script>
+		<script type="text/javascript" charset="utf-8" src="EvanstonLoopGeolocs.js"></script>
+		<script type="text/javascript">
+			document.addEventListener("deviceready", onDeviceReady, false);
+		</script>
 		<link href="stylesheet.css" rel="stylesheet" type="text/css" />    
 	</head>
 
@@ -27,5 +31,13 @@
 			</script>
 			 minutes
 		</h1>
+		
+		<h1>Distance to stop:
+			<script type="text/javascript">
+				//document.write(stops[stopnumber].geoloc,mylocation())
+			</script>
+			 minutes
+		</h1>
+		
 	</body>
 </html>

@@ -1,7 +1,4 @@
 //Bus stop initialization
-var stop1 = new stop("Noyes","latitude","longitude",["06:40:00 PM","06:45:00 PM","06:57:00 PM"]);
-var stop2 = new stop("Yesno","latitude","longitude",["10:34:00 PM","10:39:00 PM"]);
-var stops = [stop1,stop2];
 
 function stop(name, latitude, longitude, times){
 	//This is the constructor for a stop datatype
@@ -10,7 +7,7 @@ function stop(name, latitude, longitude, times){
 	this.name=name;
 	this.latitude=latitude;
 	this.longitude=longitude;
-	this.times=[];
+	this.times=times;
 	var now = new Date();
 	for (i in times){
 		this.times[i] = new Date(now.getMonth()+1 + "/" + now.getDate() + "/" + now.getFullYear() + " " + times[i])
@@ -28,7 +25,7 @@ function getTimeUntilNextBus(curtime, stopList){
 	tomorrowStop = stopList[0]
 	tomorrowStop.setDate(tomorrowStop.getDate()+1)
 	
-	return (tomorrowStop - curtime)/1000/60
+	return Math.round( (tomorrowStop - curtime)/1000/60 )
 }
 
 function listStopsinOptionsFormat(){
@@ -46,6 +43,19 @@ function selectedRedirect(selectObject){
 	if (selectObject.value != ''){
 		window.location = 'showstop.html?stop=' + selectObject.value;
 	}
+}
+
+function distanceBetweenCoords(p1, p2){
+    var R = 3958.75587
+    var dLat  = this.rad(p2.latitude - p1.latitude)
+    var dLong = this.rad(p2.longitude - p1.longitude)
+
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(this.rad(p1.latitude)) * Math.cos(this.rad(p2.latitude)) * Math.sin(dLong/2) * Math.sin(dLong/2)
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+    var d = R * c
+
+    return Math.round(d)
 }
 
 function getQueryVariable(variable) {

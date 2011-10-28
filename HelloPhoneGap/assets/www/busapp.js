@@ -1,25 +1,35 @@
-function stop(name, times){
+//Bus stop initialization
+var stop1 = new stop("Noyes","latitude","longitude",["06:40:00 PM","06:45:00 PM","06:57:00 PM"]);
+var stop2 = new stop("Yesno","latitude","longitude",["10:34:00 PM","10:39:00 PM"]);
+var stops = [stop1,stop2];
+
+function stop(name, latitude, longitude, times){
 	//This is the constructor for a stop datatype
 	//We don't have to use this, but it works pretty easily; just for testing, for now
 	//Would probably use date objects instead of numbers when initializing
 	this.name=name;
-	this.times=times;
+	this.latitude=latitude;
+	this.longitude=longitude;
+	this.times=[];
+	var now = new Date();
+	for (i in times){
+		this.times[i] = new Date(now.getMonth()+1 + "/" + now.getDate() + "/" + now.getFullYear() + " " + times[i])
+	}
 }
 
-//Bus stop initialization
-var stop1 = new stop("Noyes",[1,2,3]);
-var stop2 = new stop("Noyey",[1,2,3]);
-var stops = [stop1,stop2];
-
-/*function getStops(){
-	//This is a placeholder until we have the actual functionality to get the stops from the CSV file
-	//It will eventually just return a list of the stops
-	var stops = new Array();
-	stops[0] = "";
-	stops[1] = "Stop1";
-	stops[2] = "Stop2";
-	return stops;
-}*/
+function getTimeUntilNextBus(curtime, stopList){
+	for (i in stopList){
+		difference = (stopList[i] - curtime)/1000/60
+		if (difference>0){
+			return difference 
+		}
+	}
+	
+	tomorrowStop = stopList[0]
+	tomorrowStop.setDate(tomorrowStop.getDate()+1)
+	
+	return (tomorrowStop - curtime)/1000/60
+}
 
 function listStopsinOptionsFormat(){
 	//This function takes the stops and prints them out as a list of options tags (for the drop-down menu)
@@ -51,49 +61,3 @@ function getQueryVariable(variable) {
 	alert('Query Variable ' + variable + ' not found');
 }
 
-// Wait for PhoneGap to load
-    //
-    function onLoad() {
-        document.addEventListener("deviceready", onDeviceReady, false);
-    }
-
-    // PhoneGap is ready
-    //
-    function onDeviceReady() {
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-    }
-
-    function gotFS(fileSystem) {
-        fileSystem.root.getFile("data/Campus Loop.csv", null, gotFileEntry, fail);
-    }
-
-    function gotFileEntry(fileEntry) {
-        fileEntry.file(gotFile, fail);
-    }
-
-    function gotFile(file){
-        readDataUrl(file);
-        readAsText(file);
-    }
-
-    function readDataUrl(file) {
-        var reader = new FileReader();
-        reader.onloadend = function(evt) {
-            console.log("Read as data URL");
-            console.log(evt.target.result);
-        };
-        reader.readAsDataURL(file);
-    }
-
-    function readAsText(file) {
-        var reader = new FileReader();
-        reader.onloadend = function(evt) {
-            console.log("Read as text");
-            console.log(evt.target.result);
-        };
-        reader.readAsText(file);
-    }
-
-    function fail(evt) {
-        console.log(evt.target.error.code);
-    }

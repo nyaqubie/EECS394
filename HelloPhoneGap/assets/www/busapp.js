@@ -1,19 +1,21 @@
-function stop(name, times){
+//Bus stop initialization
+var stop1 = new stop("Noyes","latitude","longitude",["06:40:00 PM","06:45:00 PM","06:57:00 PM"]);
+var stop2 = new stop("Yesno","geolocstring",["10:34:00 PM","10:39:00 PM"]);
+var stops = [stop1,stop2];
+
+function stop(name, latitude, longitude, times){
 	//This is the constructor for a stop datatype
 	//We don't have to use this, but it works pretty easily; just for testing, for now
 	//Would probably use date objects instead of numbers when initializing
 	this.name=name;
+	this.latitude=latitude;
+	this.longitude=longitude;
 	this.times=[];
 	var now = new Date();
 	for (i in times){
 		this.times[i] = new Date(now.getMonth()+1 + "/" + now.getDate() + "/" + now.getFullYear() + " " + times[i])
 	}
 }
-
-//Bus stop initialization
-var stop1 = new stop("Noyes",["06:40:00 PM","06:45:00 PM","06:57:00 PM"]);
-var stop2 = new stop("Yesno",["10:34:00 PM","10:39:00 PM"]);
-var stops = [stop1,stop2];
 
 /*function getStops(){
 	//This is a placeholder until we have the actual functionality to get the stops from the CSV file
@@ -27,7 +29,7 @@ var stops = [stop1,stop2];
 
 function getTimeUntilNextBus(stopList){
 	var now = new Date();
-	
+
 	for (i in stopList){
 		difference = (stopList[i] - now)/1000/60
 		if (difference>0){

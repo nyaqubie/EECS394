@@ -1,10 +1,19 @@
 describe("stop", function() {
-	beforeEach(function() {
-
+	beforeEach(function() {	
+		var stop2 = new stop("Yesno","latitude","longitude",["10:34:00 PM","10:39:00 PM"]);
 	});
 
-	it("should...", function() {
-
+	it("Stop's name will be accurate in the stop object", function() {
+		expect(stop2.name).toEqual("Yesno");
+	});
+	
+	it("Stop's geolocation data will be accurate in the stop object", function() {
+		expect(stop2.latitude).toEqual("latitude");
+		expect(stop2.longitude).toEqual("longitude");
+	});
+	
+	it("Stop times will be created properly in the stop object", function() {
+		//Need to fake the time for this
 	});
 
 });

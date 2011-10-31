@@ -1,54 +1,43 @@
 <!DOCTYPE html> 
 <html> 
 	<head> 
-	<title>NU Bus Tracker</title> 
+		<title>NU Bus Tracker</title> 
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<link rel="stylesheet" href="styles/jquery.mobile-1.0rc2.min.css" />
+		
+		<script type="text/javascript" charset="utf-8" src="phonegap-1.1.0.js"></script>
+		<script type="text/javascript" src="lib/jquery/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript" src="lib/jquery/jquery.mobile-1.0rc2.min.js"></script>	
+		<script type="text/javascript" charset="utf-8" src="app.js"></script>
+	</head> 
 	
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<body> 
+		<div data-role="page" id="index" data-theme="b">
+			<div data-role="header" data-theme="a">
+				<h1>App Name</h1>
+			</div>
+			
+			<br />
+			<a href="" data-role='button' data-rel="dialog">Select Team</a>
+			<br />
+			
+			<div data-role="footer" data-theme="a">
+				<h4>This is a demo version of the App</h4>
+			</div>
+		</div>
 
-	<script type="text/javascript" charset="utf-8" src="phonegap-1.1.0.js"></script>
-	<script type="text/javascript" charset="utf-8" src="busapp.js"></script>
+
+		<div data-role="page" id="broken" data-title="NU Bus Tracker">
+			<div data-role="header">
+				<h1>NU Bus Tracker</h1>
+			</div>
+			
+			<div data-role="content">	
+				<p>This function is currently not implemented.</p>		
+				<p><a href='#' data-role='button' data-rel="back">App Name</a></p>	
+			</div>
+		</div>
+	</body>
 	
-	<link rel="stylesheet" href="styles/jquery.mobile-1.0rc2.min.css" />
-	<script type="text/javascript" src="lib/jquery/jquery-1.6.4.min.js"></script>
-	<script type="text/javascript" src="lib/jquery/jquery.mobile-1.0rc2.min.js"></script>	
-</head> 
-<body> 
-
-<div data-role="page" id="index" data-theme="b">
-
-	<div data-role="header" data-theme="a">
-		<h1>NU Bus Tracker</h1>
-	</div>
-	
-		<br />
-		<!--<a href='nearest.html' data-role='button'>Nearest Stop</a> -->
-		<a href="#broken" data-role='button' data-rel="dialog">Nearest Stop</a>
-		<br />
-		<a href='lookup.html' data-role='button' rel="external">Look Up Stop</a>
-		<br />
-		<!--<a href='navigate.html' data-role='button'>Navigate</a> -->
-		<a href="#broken" data-role='button' data-rel="dialog">Navigate</a>
-		<br />
-
-	<!--<div data-role="content" data-theme="b">		
-	</div> -->
-
-	<div data-role="footer" data-theme="a">
-		<h4>This is a demo version of the App</h4>
-	</div>
-</div>
-
-
-<div data-role="page" id="broken" data-title="NU Bus Tracker">
-	<div data-role="header">
-		<h1>NU Bus Tracker</h1>
-	</div>
-	
-	<div data-role="content">	
-		<p>This function is currently not implemented.</p>		
-		<p><a href='#' data-role='button' data-rel="back">Main Menu</a></p>	
-	</div>
-</div>
-
-</body>
 </html>

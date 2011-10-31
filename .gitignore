@@ -1,4 +1,6 @@
-.metadata
+MPD/bin
+MPD/gen
+MPD/local.properties
 HelloPhoneGap/bin
 HelloPhoneGap/gen
 HelloPhoneGap/local.properties

@@ -9,38 +9,37 @@
 		<script type="text/javascript" charset="utf-8" src="phonegap-1.1.0.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-1.6.4.min.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery.mobile-1.0rc2.min.js"></script>	
-		<script type="text/javascript" charset="utf-8" src="app.js"></script>
+		<script type="text/javascript" src="app.js"></script>
 	</head> 
 	
 	<body> 
 		<div data-role="page" id="index" data-theme="b">
 			<div data-role="header" id='header' data-theme="a">
 				<h1>Events</h1>
-				<a href="index.html" rel='external' data-role='button'>Back</a>
+				<a href="events.html" rel='external' data-role='button'>Back</a>
 			</div>
 			<script type="text/javascript">
+				var eventid = getQueryVariable('id');
+				console.log(eventid);
 				$.ajax({
-					url: 'http://json.shookit.com/getevents',
+					url: 'http://json.shookit.com/getinterested',
 					type: 'GET',
 					dataType: 'jsonp',
+					data:{radius: 3, eventID: 8, geolocation: 9},
 					jsonp: 'jsoncallback',
 					timeout: 1000,
 					success: function(data, status){
-						for (var i = 0; i<data.length; i++){
-							var link = document.createElement('a');
-							//link.setAttribute('href','event.html');
-							link.setAttribute('href','event.html?id='+data[i][0]);
-							link.setAttribute('rel','external');
-							link.setAttribute('data-role','button');
-							link.appendChild(document.createTextNode(data[i][1] + " " + data[i][2]));
-							$("#footer").before(link);	//add the link before the footer
-							$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
-						}
+						var numInt = document.createElement('h2');
+						numInt.appendChild(document.createTextNode("Number interested: " + data));
+						$("#footer").before(numInt);
+						$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
 					},
 					error: function(){
 						alert('bad')
 					}
 				});
+
+
 			</script>
 			
 			<div data-role="footer" id="footer" data-theme="a">

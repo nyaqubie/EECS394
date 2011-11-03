@@ -14,16 +14,38 @@
 	
 	<body> 
 		<div data-role="page" id="index" data-theme="b">
-			<div data-role="header" data-theme="a">
-				<h1>App Name</h1>
+			<div data-role="header" id='header' data-theme="a">
+				<h1>Events</h1>
+				<a href="index.html" data-role='button'>Back</a>
 			</div>
+			<script type="text/javascript">
+				$.ajax({
+					url: 'http://json.shookit.com/getevents',
+					type: 'GET',
+					dataType: 'jsonp',
+					jsonp: 'jsoncallback',
+					timeout: 1000,
+					success: function(data, status){
+						for (var i = 0; i<data.length; i++){
+							var link = document.createElement('a');
+							link.setAttribute('href','event?id='+data[i][0]);
+							link.setAttribute('data-role','button');
+							link.appendChild(document.createTextNode(data[i][1] + " " + data[i][2]));
+							$("#footer").before(link);	//add the link before the footer
+							$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
+						}
+					},
+					error: function(){
+						alert('bad')
+					}
+				});
+				
+				
+				
+			</script>
 			
-			<br />
-			<a href="events.html" data-role='button'>Events</a>
-			<br />
-			
-			<div data-role="footer" data-theme="a">
-				<h4>This is a demo version of the App</h4>
+			<div data-role="footer" id="footer" data-theme="a">
+				<h4>Footer</h4>
 			</div>
 		</div>
 

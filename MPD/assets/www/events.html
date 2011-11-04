@@ -24,7 +24,7 @@
 					type: 'GET',
 					dataType: 'jsonp',
 					jsonp: 'jsoncallback',
-					timeout: 1000,
+					timeout: 10000,
 					success: function(data, status){
 						for (var i = 0; i<data.length; i++){
 							var link = document.createElement('a');

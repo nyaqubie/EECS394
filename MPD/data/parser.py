@@ -1,5 +1,5 @@
 import re
-
+import time
 scheduleFile = open('schedule.csv','r')
 scheduleFile.readline()
 schedule = []
@@ -28,12 +28,15 @@ for i in schedule:
                 byTeam[teamname]=[]
                 byTeam[teamname].append([i[0], i[1], i[2], i[3]])
 for i in byTeam.items():
-        outstring = ''
-        outstring+="var " + i[0] + " = new team('"
-        outstring+= i[1][0][1] + "', ["
-        for j in i[1]:
-                outstring+="['"
-                outstring+= j[0] + "','" + j[2] + "','" + j[3] 
-                outstring+="'],"
-        outstring+="])"
-        print outstring
+        if i[0] == "Northwestern" or i[0] == "Michigan":
+                for j in i[1]:
+                        outstring="INSERT INTO json_app_event (Name, Date) values ('" 
+                        outstring+= j[1]
+                        if j[3] == "Home":
+                                outstring+= " at "
+                        else:
+                                outstring+= " vs "
+                        outstring += j[2] + "', '"
+                        date = time.strptime(j[0],"%m/%d/%Y")
+                        outstring += str(date.tm_year) + '-' + str(date.tm_mon).zfill(2) + '-' + str(date.tm_mday).zfill(2) + " 12:00');"
+                        print outstring

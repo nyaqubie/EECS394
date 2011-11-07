@@ -18,6 +18,7 @@
 				<h1 id='events'>Location</h1>
 				<script type="text/javascript">
 					var eveid = getQueryVariable('eventid');
+					var locid = getQueryVariable('locationid');
 					var backlink = document.createElement('a');
 					backlink.setAttribute('href','event.html?eventid=' + eveid);
 					backlink.setAttribute('rel','external');
@@ -25,9 +26,37 @@
 					backlink.appendChild(document.createTextNode('Back'));
 					$("#events").after(backlink);
 				</script>
+				
+				<script type="text/javascript">
+					$.ajax({
+						url: 'http://69.164.198.224/checkinterest',
+						type: 'GET',
+						dataType: 'jsonp',
+						data:{uuid: 3, locationid: locid, eventid:eveid},
+						jsonp: 'jsoncallback',
+						timeout: 10000,
+						success: function(data, status){
+							var link = document.createElement('a');
+							link.setAttribute('rel','external');
+							link.setAttribute('data-role','button');
+							link.setAttribute('id','commitlink');
+							if (data == 0){
+								link.setAttribute('onclick','commitToLocation()');
+								link.appendChild(document.createTextNode('Show interest in this location'));
+							}
+							else{
+								link.appendChild(document.createTextNode('You are interested in this location'));
+							}
+							$("#footer").before(link);	//add the link before the footer
+							$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
+						},
+						error: function(){
+							alert('bad')
+						}
+					});
+
+				</script>
 			</div>
-			
-			<a id='commitlink' OnClick='commitToLocation()' rel='external' data-role='button'>Show interest in location</a>
 			
 			<script type="text/javascript">
 				function commitToLocation(){
@@ -53,10 +82,8 @@
 							alert('bad')
 						}
 					});
-
 				}
 			</script>
-			
 						
 			<div data-role="footer" id="footer" data-theme="a">
 				<h4>Footer</h4>

@@ -19,20 +19,23 @@
 				<a href="events.html" rel='external' data-role='button'>Back</a>
 			</div>
 			<script type="text/javascript">
-				var eventid = getQueryVariable('id');
-				console.log(eventid);
+				var eventid = getQueryVariable('eventid');
 				$.ajax({
-					url: 'http://json.shookit.com/getinterested',
+					url: 'http://69.164.198.224/getlocations',
 					type: 'GET',
 					dataType: 'jsonp',
-					data:{radius: 3, eventID: 8, geolocation: 9},
 					jsonp: 'jsoncallback',
 					timeout: 1000,
 					success: function(data, status){
-						var numInt = document.createElement('h2');
-						numInt.appendChild(document.createTextNode("Number interested: " + data));
-						$("#footer").before(numInt);
-						$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
+						for (var i = 0; i<data.length; i++){
+							var link = document.createElement('a');
+							link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0]);
+							link.setAttribute('rel','external');
+							link.setAttribute('data-role','button');
+							link.appendChild(document.createTextNode(data[i]));
+							$("#footer").before(link);	//add the link before the footer
+							$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
+						}
 					},
 					error: function(){
 						alert('bad')

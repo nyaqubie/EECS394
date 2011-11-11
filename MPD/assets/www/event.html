@@ -32,7 +32,7 @@
 							link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0]);
 							link.setAttribute('rel','external');
 							link.setAttribute('data-role','button');
-							link.appendChild(document.createTextNode(data[i]));
+							link.appendChild(document.createTextNode(data[i][1] + ' - ' + data[i][2]));
 							$("#footer").before(link);	//add the link before the footer
 							$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
 						}
@@ -41,7 +41,6 @@
 						alert('bad')
 					}
 				});
-
 
 			</script>
 			

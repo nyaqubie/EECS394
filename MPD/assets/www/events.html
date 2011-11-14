@@ -19,27 +19,7 @@
 				<a href="index.html" rel='external' data-role='button'>Back</a>
 			</div>
 			<script type="text/javascript">
-				$.ajax({
-					url: 'http://69.164.198.224/getevents',
-					type: 'GET',
-					dataType: 'jsonp',
-					jsonp: 'jsoncallback',
-					timeout: 10000,
-					success: function(data, status){
-						for (var i = 0; i<data.length; i++){
-							var link = document.createElement('a');
-							link.setAttribute('href','event.html?eventid='+data[i][0]);
-							link.setAttribute('rel','external');
-							link.setAttribute('data-role','button');
-							link.appendChild(document.createTextNode(data[i][1] + " " + data[i][2]));
-							$("#footer").before(link);	//add the link before the footer
-							$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
-						}
-					},
-					error: function(){
-						alert('bad')
-					}
-				});
+				getEvents();
 			</script>
 			
 			<div data-role="footer" id="footer" data-theme="a">

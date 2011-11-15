@@ -87,15 +87,21 @@ function listLocationsForEvent(){
 		url: 'http://69.164.198.224/getlocations',
 		type: 'GET',
 		dataType: 'jsonp',
+		data:{eventid:eventid},
 		jsonp: 'jsoncallback',
 		timeout: 1000,
 		success: function(data, status){
 			for (var i = 0; i<data.length; i++){
 				var link = document.createElement('a');
+				var name = data[i][1];
+				var address = data[i][2];
+				var geolocation = data[i][3];
+				var numinterested = data[i][4];
+				
 				link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0]);
 				link.setAttribute('rel','external');
 				link.setAttribute('data-role','button');
-				link.appendChild(document.createTextNode(data[i][1] + ' - ' + data[i][2]));
+				link.appendChild(document.createTextNode(name + ' ' + numinterested));
 				$("#footer").before(link);	//add the link before the footer
 				$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
 			}

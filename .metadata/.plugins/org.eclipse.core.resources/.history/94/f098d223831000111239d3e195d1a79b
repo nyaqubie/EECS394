@@ -1,0 +1,31 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+		<title>Event Tracker</title> 
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<link rel="stylesheet" href="styles/jquery.mobile-1.0rc2.min.css" />
+		
+		<script type="text/javascript" charset="utf-8" src="phonegap-1.1.0.js"></script>
+		<script type="text/javascript" src="lib/jquery/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript" src="lib/jquery/jquery.mobile-1.0rc2.min.js"></script>	
+		<script type="text/javascript" charset="utf-8" src="app.js"></script>
+	</head> 
+	
+	<body> 
+		<div data-role="page" id="index" data-theme="b">
+			<div data-role="header" id='header' data-theme="a">
+				<h1>Events</h1>
+				<a href="index.html" rel='external' data-role='button'>Back</a>
+			</div>
+			<script type="text/javascript">
+				getEvents();
+			</script>
+			
+			<div data-role="footer" id="footer" data-theme="a">
+				<h4>Footer</h4>
+			</div>
+		</div>
+	</body>
+	
+</html>

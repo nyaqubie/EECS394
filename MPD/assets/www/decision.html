@@ -1,0 +1,54 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Event Tracker</title> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<script type="text/javascript" charset="utf-8" src="phonegap-1.1.0.js"></script>
+	<script type="text/javascript" charset="utf-8" src="busapp.js"></script>
+	
+	<link rel="stylesheet" href="styles/jquery.mobile-1.0rc2.min.css" />
+	<script type="text/javascript" src="lib/jquery/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="lib/jquery/jquery.mobile-1.0rc2.min.js"></script>	
+</head> 
+<body> 
+
+<div data-role="page" id="index" data-theme="b">
+
+	<div data-role="header" data-theme="a">
+		<h1>Event Tracker</h1>
+	</div>
+	
+		<br />
+		<!--<a href='remove.html' data-role='button'>Remove Interest</a> -->
+		<a href="#broken" data-role='button' data-rel="dialog">Remove Interest</a>
+		<br />
+		
+		<br />
+		<!--<a href='navigate.html' data-role='button'>Commit</a> -->
+		<a href="#broken" data-role='button' data-rel="dialog">Commit</a>
+		<br />
+
+	<!--<div data-role="content" data-theme="b">		
+	</div> -->
+
+	<div data-role="footer" data-theme="a">
+		<h4>This is a demo version of the App</h4>
+	</div>
+</div>
+
+
+<div data-role="page" id="broken" data-title="Event Tracker">
+	<div data-role="header">
+		<h1>Events Tracker</h1>
+	</div>
+	
+	<div data-role="content">	
+		<p>This function is currently not implemented.</p>		
+		<p><a href='#' data-role='button' data-rel="back">Main Menu</a></p>	
+	</div>
+</div>
+
+</body>
+</html>

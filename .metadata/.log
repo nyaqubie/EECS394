@@ -1,0 +1,341 @@
+!SESSION 2011-10-26 14:47:16.146 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-10-26 14:49:45.021
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-10-26 14:56:46.310 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-10-26 14:59:55.977
+!MESSAGE Invalid preference page path: XML Syntax
+
+!ENTRY org.eclipse.jdt.launching 4 150 2011-10-26 15:05:27.919
+!MESSAGE Specified VM install not found: type Standard VM, name jre7
+
+!ENTRY org.eclipse.jdt.launching 4 150 2011-10-26 15:06:22.160
+!MESSAGE Specified VM install not found: type Standard VM, name jre7
+!SESSION 2011-10-26 15:09:39.617 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-10-26 15:09:58.079
+!MESSAGE Invalid preference page path: XML Syntax
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2011-10-26 15:11:51.255
+!MESSAGE No command output when running: 'am start -n com.phonegap.helloworld/com.phonegap.helloworld.App -a android.intent.action.MAIN -c android.intent.category.LAUNCHER' on device emulator-5554
+!STACK 0
+com.android.ddmlib.ShellCommandUnresponsiveException
+	at com.android.ddmlib.AdbHelper.executeRemoteCommand(AdbHelper.java:408)
+	at com.android.ddmlib.Device.executeShellCommand(Device.java:311)
+	at com.android.ide.eclipse.adt.internal.launch.ActivityLaunchAction.doLaunchAction(ActivityLaunchAction.java:74)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.launchApp(AndroidLaunchController.java:1148)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.clientChanged(AndroidLaunchController.java:1498)
+	at com.android.ddmlib.AndroidDebugBridge.clientChanged(AndroidDebugBridge.java:871)
+	at com.android.ddmlib.Device.update(Device.java:436)
+	at com.android.ddmlib.Client.update(Client.java:836)
+	at com.android.ddmlib.HandleAppName.handleAPNM(HandleAppName.java:90)
+	at com.android.ddmlib.HandleAppName.handleChunk(HandleAppName.java:64)
+	at com.android.ddmlib.MonitorThread.callHandler(MonitorThread.java:414)
+	at com.android.ddmlib.MonitorThread.processClientActivity(MonitorThread.java:322)
+	at com.android.ddmlib.MonitorThread.run(MonitorThread.java:263)
+!SESSION 2011-10-27 06:33:54.336 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-10-27 06:35:44.833
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-10-27 07:02:54.257 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-10-27 07:03:09.222
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-10-27 07:48:51.360 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-10-27 07:49:06.552
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-10-27 08:08:35.549 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-10-27 08:09:03.367
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-10-27 20:47:54.775 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-10-27 21:45:22.536
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-11-03 18:03:21.472 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.jdt.core 4 4 2011-11-03 18:04:22.774
+!MESSAGE JavaBuilder handling ImageBuilderInternalException while building: HelloPhoneGap
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:793)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:184)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Could not delete '/HelloPhoneGap/bin/classes/com'.
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:798)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1935)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:184)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: C:\Users\Sean\EECS394\HelloPhoneGap\bin\classes\com\phonegap.
+Contains: Could not delete: C:\Users\Sean\EECS394\HelloPhoneGap\bin\classes\com.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2011-11-03 18:04:22.805
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2011-11-03 18:04:22.805
+!MESSAGE Could not delete '/HelloPhoneGap/bin/classes/com'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:798)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1935)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:184)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: C:\Users\Sean\EECS394\HelloPhoneGap\bin\classes\com\phonegap.
+Contains: Could not delete: C:\Users\Sean\EECS394\HelloPhoneGap\bin\classes\com.
+!SUBENTRY 3 org.eclipse.core.resources 4 273 2011-11-03 18:04:22.805
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2011-11-03 18:04:22.805
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2011-11-03 18:04:22.805
+!MESSAGE Could not delete: C:\Users\Sean\EECS394\HelloPhoneGap\bin\classes\com\phonegap.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2011-11-03 18:04:22.806
+!MESSAGE Could not delete: C:\Users\Sean\EECS394\HelloPhoneGap\bin\classes\com.
+
+!ENTRY org.eclipse.ui 4 4 2011-11-03 18:05:25.217
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-11-03 18:12:48.660 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-11-03 18:13:06.220
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-11-03 20:04:36.323 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-11-03 20:07:54.397
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-11-04 05:37:00.964 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-11-04 05:37:47.426
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-11-04 06:30:12.420 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-11-04 06:30:31.244
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-11-04 06:33:41.703 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-11-04 06:34:20.983
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-11-04 06:37:44.590 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-11-04 06:38:32.267
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-11-09 19:05:24.647 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-11-09 19:10:07.118
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-11-10 05:30:19.958 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-11-10 05:44:07.970
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-11-15 07:22:45.607 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-11-15 07:32:14.820
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-11-15 07:48:44.611 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-11-15 07:49:59.084
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-11-15 07:57:59.220 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-11-15 07:59:08.163
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-11-16 11:06:57.637 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui 4 4 2011-11-16 11:08:43.103
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2011-11-16 14:11:42.123 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.7.0_01
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2011-11-16 14:11:51.035
+!MESSAGE projectOpenedWithWorkspace: failed to find manifest package for project MPD
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2011-11-16 14:11:56.554
+!MESSAGE fileChanged: failed to find manifest package for project MPD
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2011-11-16 14:12:00.089
+!MESSAGE Unable to read C:\Users\Sean\EECS394\MPD\AndroidManifest.xml: org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/MPD/AndroidManifest.xml'.
+!STACK 0
+com.android.io.StreamException: org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/MPD/AndroidManifest.xml'.
+	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:50)
+	at com.android.sdklib.xml.AndroidManifestParser.parse(AndroidManifestParser.java:606)
+	at com.android.ide.eclipse.adt.internal.project.AndroidManifestHelper.parse(AndroidManifestHelper.java:71)
+	at com.android.ide.eclipse.adt.internal.build.builders.PreCompilerBuilder.build(PreCompilerBuilder.java:339)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/MPD/AndroidManifest.xml'.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:793)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:278)
+	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:48)
+	... 15 more
+
+!ENTRY org.eclipse.ui 4 4 2011-11-16 14:12:27.214
+!MESSAGE Invalid preference page path: XML Syntax

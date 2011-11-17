@@ -1,17 +1,9 @@
-function getQueryVariable(variable) {
-	//This function analyzes the URL and pulls out the specified variable (POST-style)
-	var query = window.location.search.substring(1);
-	var vars = query.split("&");
-	for (var i=0;i<vars.length;i++) {
-		var pair = vars[i].split("=");
-		if (pair[0] == variable) {
-			return pair[1];
-		}
-	} 
-	alert('Query Variable ' + variable + ' not found');
-}
+///////////////////////////////////////////////////////////////////////////////
+//AJAX Functions
+///////////////////////////////////////////////////////////////////////////////
 
-function commitToLocation(){
+//This function allows the user to express interest in a specific location+event, updates the button accordingly
+function showInterestInLocation(){
 	var eveid = getQueryVariable('eventid');
 	var locid = getQueryVariable('locationid');
 	var devuuid = device.uuid;
@@ -37,6 +29,7 @@ function commitToLocation(){
 	});
 }
 
+//This function allows the user to remove interest in a specific location+event, updates the button accordingly
 function removeInterestInLocation(){
 	var eveid = getQueryVariable('eventid');
 	var locid = getQueryVariable('locationid');
@@ -63,18 +56,9 @@ function removeInterestInLocation(){
 	});
 }
 
-function createBackButton(){
-	var eveid = getQueryVariable('eventid');
-	var locid = getQueryVariable('locationid');
-	var backlink = document.createElement('a');
-	var devuuid = device.uuid;
-	backlink.setAttribute('href','event.html?eventid=' + eveid);
-	backlink.setAttribute('rel','external');
-	backlink.setAttribute('data-role','button');
-	backlink.appendChild(document.createTextNode('Back'));
-	$("#events").after(backlink);
-}
 
+
+//Determine if the user has expressed interest, show the appropriate button
 function createInterestButton(){
 	var devuuid = device.uuid;
 	var eveid = getQueryVariable('eventid');
@@ -92,7 +76,7 @@ function createInterestButton(){
 			link.setAttribute('data-role','button');
 			link.setAttribute('id','commitlink');
 			if (data == 0){
-				link.setAttribute('onclick','commitToLocation()');
+				link.setAttribute('onclick','showInterestInLocation()');
 				link.appendChild(document.createTextNode('Show interest in this location'));
 			}
 			else{
@@ -108,6 +92,7 @@ function createInterestButton(){
 	});
 }
 
+//Show the information for one location
 function showLocationInfo(){
 	var locationid = getQueryVariable('locationid');
 	$.ajax({
@@ -135,6 +120,7 @@ function showLocationInfo(){
 	});
 }
 
+//List buttons for all of the locations for an event
 function listLocationsForEvent(userCoords){
 	var eventid = getQueryVariable('eventid');
 	$.ajax({
@@ -171,6 +157,7 @@ function listLocationsForEvent(userCoords){
 	});
 }
 
+//List all of the available upcoming events
 function getEvents(){
 	$.ajax({
 		url: 'http://69.164.198.224/getevents',
@@ -195,18 +182,12 @@ function getEvents(){
 	});
 }
 
-function distanceBetweenCoords(p1, p2) {
-    var R = 3958.75587;
-    var dLat = 0.0174532925*(p2.latitude - p1.latitude);
-    var dLong = 0.0174532925*(p2.longitude - p1.longitude);
 
-    var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(0.0174532925*(p1.latitude)) * Math.cos(0.0174532925*(p2.latitude)) * Math.sin(dLong/2) * Math.sin(dLong/2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    var d = R * c;
-	
-    return Math.round(d);
-}
+///////////////////////////////////////////////////////////////////////////////
+//Sensor Functions
+///////////////////////////////////////////////////////////////////////////////
 
+//Get the GPS location; if successful then list the event locations (using the appropriate userCoords)
 function getGPSLocation() {	
 		navigator.geolocation.getCurrentPosition(GPSSuccess, GPSError, {enableHighAccuracy: true});
 }
@@ -221,4 +202,46 @@ function GPSSuccess(position) {
 	userCoords.latitude = userLat;
 	userCoords.longitude = userLong;
 	listLocationsForEvent(userCoords);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//Data Manipulation or Display Functions
+///////////////////////////////////////////////////////////////////////////////
+
+//Read the eventid, create the appropriate 'back' button
+function createBackButton(){
+	var eveid = getQueryVariable('eventid');
+	var backlink = document.createElement('a');
+	backlink.setAttribute('href','event.html?eventid=' + eveid);
+	backlink.setAttribute('rel','external');
+	backlink.setAttribute('data-role','button');
+	backlink.appendChild(document.createTextNode('Back'));
+	$("#events").after(backlink);
+}
+
+//This function analyzes the URL and pulls out the specified variable (POST-style)
+function getQueryVariable(variable) {
+	var query = window.location.search.substring(1);
+	var vars = query.split("&");
+	for (var i=0;i<vars.length;i++) {
+		var pair = vars[i].split("=");
+		if (pair[0] == variable) {
+			return pair[1];
+		}
+	} 
+	alert('Query Variable ' + variable + ' not found');
+}
+
+//Calculate the distance between two coordinates
+function distanceBetweenCoords(p1, p2) {
+    var R = 3958.75587;
+    var dLat = 0.0174532925*(p2.latitude - p1.latitude);
+    var dLong = 0.0174532925*(p2.longitude - p1.longitude);
+
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(0.0174532925*(p1.latitude)) * Math.cos(0.0174532925*(p2.latitude)) * Math.sin(dLong/2) * Math.sin(dLong/2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    var d = R * c;
+	
+    return Math.round(d);
 }

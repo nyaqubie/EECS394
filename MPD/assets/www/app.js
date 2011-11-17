@@ -2,120 +2,27 @@
 //AJAX Functions
 ///////////////////////////////////////////////////////////////////////////////
 
-//This function allows the user to express interest in a specific location+event, updates the button accordingly
-function showInterestInLocation(){
-	var eveid = getQueryVariable('eventid');
-	var locid = getQueryVariable('locationid');
-	var devuuid = device.uuid;
+//List all of the available upcoming events
+function getEvents(){
 	$.ajax({
-		url: 'http://69.164.198.224/showinterest',
+		url: 'http://69.164.198.224/getevents',
 		type: 'GET',
 		dataType: 'jsonp',
-		data:{uuid: devuuid, locationid: locid, eventid:eveid},
 		jsonp: 'jsoncallback',
 		timeout: 10000,
 		success: function(data, status){
-			$('#commitlink').remove();
-			var link = document.createElement('a');
-			link.setAttribute('rel','external');
-			link.setAttribute('data-role','button');
-			link.appendChild(document.createTextNode('You are interested in this location'));
-			$("#footer").before(link);	//add the link before the footer
-			$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
-		},
-		error: function(){
-			alert('bad')
-		}
-	});
-}
-
-//This function allows the user to remove interest in a specific location+event, updates the button accordingly
-function removeInterestInLocation(){
-	var eveid = getQueryVariable('eventid');
-	var locid = getQueryVariable('locationid');
-	var devuuid = device.uuid;
-	$.ajax({
-		url: 'http://69.164.198.224/removeinterest',
-		type: 'GET',
-		dataType: 'jsonp',
-		data:{uuid: devuuid, locationid: locid, eventid:eveid},
-		jsonp: 'jsoncallback',
-		timeout: 10000,
-		success: function(data, status){
-			$('#commitlink').remove();
-			var link = document.createElement('a');
-			link.setAttribute('rel','external');
-			link.setAttribute('data-role','button');
-			link.appendChild(document.createTextNode('Show interest in this location'));
-			$("#footer").before(link);	//add the link before the footer
-			$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
-		},
-		error: function(){
-			alert('bad')
-		}
-	});
-}
-
-
-
-//Determine if the user has expressed interest, show the appropriate button
-function createInterestButton(){
-	var devuuid = device.uuid;
-	var eveid = getQueryVariable('eventid');
-	var locid = getQueryVariable('locationid');
-	$.ajax({
-		url: 'http://69.164.198.224/checkinterest',
-		type: 'GET',
-		dataType: 'jsonp',
-		data:{uuid: devuuid, locationid: locid, eventid:eveid},
-		jsonp: 'jsoncallback',
-		timeout: 10000,
-		success: function(data, status){
-			var link = document.createElement('a');
-			link.setAttribute('rel','external');
-			link.setAttribute('data-role','button');
-			link.setAttribute('id','commitlink');
-			if (data == 0){
-				link.setAttribute('onclick','showInterestInLocation()');
-				link.appendChild(document.createTextNode('Show interest in this location'));
+			for (var i = 0; i<data.length; i++){
+				var link = document.createElement('a');
+				link.setAttribute('href','event.html?eventid='+data[i][0]);
+				link.setAttribute('rel','external');
+				link.setAttribute('data-role','button');
+				link.appendChild(document.createTextNode(data[i][1] + " " + data[i][2]));
+				$("#footer").before(link);	//add the link before the footer
+				$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
 			}
-			else{
-				link.setAttribute('onclick','removeInterestInLocation()');
-				link.appendChild(document.createTextNode('You are interested in this location'));
-			}
-			$("#footer").before(link);	//add the link before the footer
-			$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
 		},
 		error: function(){
 			alert('bad')
-		}
-	});
-}
-
-//Show the information for one location
-function showLocationInfo(){
-	var locationid = getQueryVariable('locationid');
-	$.ajax({
-		url: 'http://69.164.198.224/getlocation',
-		type: 'GET',
-		dataType: 'jsonp',
-		data:{locationid:locationid},
-		jsonp: 'jsoncallback',
-		timeout: 1000,
-		success: function(data, status){
-			var name = data[0][0];
-			var address = data[0][1];
-			
-			var header = document.createElement('h2');
-			header.appendChild(document.createTextNode(name));
-			$("#footer").before(header);	//add the link before the footer
-			
-			var paragraph = document.createElement('p');
-			paragraph.appendChild(document.createTextNode(address));
-			$("#footer").before(paragraph);	//add the link before the footer
-		},
-		error: function(){
-			alert('bad');
 		}
 	});
 }
@@ -157,24 +64,119 @@ function listLocationsForEvent(userCoords){
 	});
 }
 
-//List all of the available upcoming events
-function getEvents(){
+//Show the information for one location
+function showLocationInfo(){
+	var locationid = getQueryVariable('locationid');
 	$.ajax({
-		url: 'http://69.164.198.224/getevents',
+		url: 'http://69.164.198.224/getlocation',
 		type: 'GET',
 		dataType: 'jsonp',
+		data:{locationid:locationid},
+		jsonp: 'jsoncallback',
+		timeout: 1000,
+		success: function(data, status){
+			var name = data[0][0];
+			var address = data[0][1];
+			
+			var header = document.createElement('h2');
+			header.appendChild(document.createTextNode(name));
+			$("#footer").before(header);	//add the link before the footer
+			
+			var paragraph = document.createElement('p');
+			paragraph.appendChild(document.createTextNode(address));
+			$("#footer").before(paragraph);	//add the link before the footer
+		},
+		error: function(){
+			alert('bad');
+		}
+	});
+}
+
+//Determine if the user has expressed interest, show the appropriate button
+function createInterestButton(){
+	var devuuid = device.uuid;
+	var eveid = getQueryVariable('eventid');
+	var locid = getQueryVariable('locationid');
+	$.ajax({
+		url: 'http://69.164.198.224/checkinterest',
+		type: 'GET',
+		dataType: 'jsonp',
+		data:{uuid: devuuid, locationid: locid, eventid:eveid},
 		jsonp: 'jsoncallback',
 		timeout: 10000,
 		success: function(data, status){
-			for (var i = 0; i<data.length; i++){
-				var link = document.createElement('a');
-				link.setAttribute('href','event.html?eventid='+data[i][0]);
-				link.setAttribute('rel','external');
-				link.setAttribute('data-role','button');
-				link.appendChild(document.createTextNode(data[i][1] + " " + data[i][2]));
-				$("#footer").before(link);	//add the link before the footer
-				$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
+			var link = document.createElement('a');
+			link.setAttribute('rel','external');
+			link.setAttribute('data-role','button');
+			link.setAttribute('id','commitlink');
+			if (data == 0){
+				link.setAttribute('onclick','showInterestInLocation()');
+				link.appendChild(document.createTextNode('Show interest in this location'));
 			}
+			else{
+				link.setAttribute('onclick','removeInterestInLocation()');
+				link.appendChild(document.createTextNode('You are interested in this location'));
+			}
+			$("#footer").before(link);	//add the link before the footer
+			$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
+		},
+		error: function(){
+			alert('bad')
+		}
+	});
+}
+
+//This function allows the user to express interest in a specific location+event, updates the button accordingly
+function showInterestInLocation(){
+	var eveid = getQueryVariable('eventid');
+	var locid = getQueryVariable('locationid');
+	var devuuid = device.uuid;
+	$.ajax({
+		url: 'http://69.164.198.224/showinterest',
+		type: 'GET',
+		dataType: 'jsonp',
+		data:{uuid: devuuid, locationid: locid, eventid:eveid},
+		jsonp: 'jsoncallback',
+		timeout: 10000,
+		success: function(data, status){
+			$('#commitlink').remove();
+			var link = document.createElement('a');
+			link.setAttribute('id','commitlink');
+			link.setAttribute('rel','external');
+			link.setAttribute('data-role','button');
+			link.setAttribute('onclick','removeInterestInLocation()');
+			link.appendChild(document.createTextNode('You are interested in this location'));
+			$("#footer").before(link);	//add the link before the footer
+			$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
+		},
+		error: function(){
+			alert('bad')
+		}
+	});
+}
+
+//This function allows the user to remove interest in a specific location+event, updates the button accordingly
+function removeInterestInLocation(){
+	var eveid = getQueryVariable('eventid');
+	var locid = getQueryVariable('locationid');
+	var devuuid = device.uuid;
+	$.ajax({
+		url: 'http://69.164.198.224/removeinterest',
+		type: 'GET',
+		dataType: 'jsonp',
+		data:{uuid: devuuid, locationid: locid, eventid:eveid},
+		jsonp: 'jsoncallback',
+		timeout: 10000,
+		success: function(data, status){
+			$('#commitlink').remove();
+			var link = document.createElement('a');
+			link.setAttribute('id','commitlink');
+			link.setAttribute('rel','external');
+			link.setAttribute('data-role','button');
+			link.setAttribute('onclick','showInterestInLocation()');
+			link.appendChild(document.createTextNode('Show interest in this location'));
+			$("#footer").before(link);	//add the link before the footer
+			$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
 		},
 		error: function(){
 			alert('bad')

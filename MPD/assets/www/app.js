@@ -37,6 +37,32 @@ function commitToLocation(){
 	});
 }
 
+function removeInterestInLocation(){
+	var eveid = getQueryVariable('eventid');
+	var locid = getQueryVariable('locationid');
+	var devuuid = device.uuid;
+	$.ajax({
+		url: 'http://69.164.198.224/removeinterest',
+		type: 'GET',
+		dataType: 'jsonp',
+		data:{uuid: devuuid, locationid: locid, eventid:eveid},
+		jsonp: 'jsoncallback',
+		timeout: 10000,
+		success: function(data, status){
+			$('#commitlink').remove();
+			var link = document.createElement('a');
+			link.setAttribute('rel','external');
+			link.setAttribute('data-role','button');
+			link.appendChild(document.createTextNode('Show interest in this location'));
+			$("#footer").before(link);	//add the link before the footer
+			$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
+		},
+		error: function(){
+			alert('bad')
+		}
+	});
+}
+
 function createBackButton(){
 	var eveid = getQueryVariable('eventid');
 	var locid = getQueryVariable('locationid');
@@ -70,6 +96,7 @@ function createInterestButton(){
 				link.appendChild(document.createTextNode('Show interest in this location'));
 			}
 			else{
+				link.setAttribute('onclick','removeInterestInLocation()');
 				link.appendChild(document.createTextNode('You are interested in this location'));
 			}
 			$("#footer").before(link);	//add the link before the footer

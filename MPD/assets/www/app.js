@@ -81,6 +81,34 @@ function createInterestButton(){
 	});
 }
 
+function showLocationInfo(){
+	var locationid = getQueryVariable('locationid');
+	$.ajax({
+		url: 'http://69.164.198.224/getlocation',
+		type: 'GET',
+		dataType: 'jsonp',
+		data:{locationid:locationid},
+		jsonp: 'jsoncallback',
+		timeout: 1000,
+		success: function(data, status){
+			var name = data[0][0];
+			var address = data[0][1];
+			console.log(name);
+			
+			var header = document.createElement('h2');
+			header.appendChild(document.createTextNode(name));
+			$("#footer").before(header);	//add the link before the footer
+			
+			var paragraph = document.createElement('p');
+			paragraph.appendChild(document.createTextNode(address));
+			$("#footer").before(paragraph);	//add the link before the footer
+		},
+		error: function(){
+			alert('bad');
+		}
+	});
+}
+
 function listLocationsForEvent(){
 	var eventid = getQueryVariable('eventid');
 	$.ajax({

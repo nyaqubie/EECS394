@@ -9,7 +9,7 @@
 		<script type="text/javascript" charset="utf-8" src="phonegap-1.1.0.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-1.6.4.min.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery.mobile-1.0rc2.min.js"></script>	
-		<script type="text/javascript" charset="utf-8" src="app.js"></script>
+		<script type="text/javascript" charset="utf-8" src="app1.js"></script>
 	</head> 
 	
 	<body> 
@@ -18,10 +18,13 @@
 				<h1>Events</h1>
 				<a href="index.html" rel='external' data-role='button'>Back</a>
 			</div>
-
+			
+			
+			<ul data-role="listview" id="event_list"  data-inset="true">
 			<script type="text/javascript">
 				getEvents();
 			</script>
+			</ul>
 
 			<div data-role="footer" id="footer" data-theme="a">
 				<h4>Footer</h4>

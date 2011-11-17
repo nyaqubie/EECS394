@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="6" version="2.0">
+<workbench progressCount="16" version="2.0">
 <workbenchAdvisor/>
-<window height="860" width="720" x="720" y="0">
+<window height="860" maximized="true" width="720" x="720" y="0">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
 </perspectiveBar>
 <coolbarLayout>
 <coolItem id="group.file" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="152" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="122" y="22"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="adt.actionSet.avdManager" itemType="typeToolBarContribution" x="61" y="22"/>
 <coolItem id="adt.actionSet.wizards" itemType="typeToolBarContribution" x="84" y="22"/>
@@ -37,36 +37,21 @@
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
-<part id="3"/>
-<part id="4"/>
-<part id="5"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="index.html" partName="index.html" path="C:/Users/Sean/EECS394/MPD/assets/www/index.html" title="index.html" tooltip="MPD/assets/www/index.html" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MPD/assets/www/index.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="739" selectionTopPixel="56"/>
+<editor activePart="true" focus="true" id="org.eclipse.ui.DefaultTextEditor" name="app2.js" partName="app2.js" path="C:/Users/Sean/EECS394/MPD/assets/www/app2.js" title="app2.js" tooltip="MPD/assets/www/app2.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MPD/assets/www/app2.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3793" selectionTopPixel="1586"/>
 </editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="lookup.html" partName="lookup.html" path="C:/Users/Sean/EECS394/HelloPhoneGap/assets/www/lookup.html" title="lookup.html" tooltip="HelloPhoneGap/assets/www/lookup.html" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/HelloPhoneGap/assets/www/lookup.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1890" selectionTopPixel="476"/>
-</editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="events.html" partName="events.html" path="C:/Users/Sean/EECS394/MPD/assets/www/events.html" title="events.html" tooltip="MPD/assets/www/events.html" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MPD/assets/www/events.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="904" selectionTopPixel="0"/>
+<editor id="org.eclipse.ui.DefaultTextEditor" name="event.html" partName="event.html" path="C:/Users/Sean/EECS394/MPD/assets/www/event.html" title="event.html" tooltip="MPD/assets/www/event.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MPD/assets/www/event.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.ui.DefaultTextEditor" name="app.js" partName="app.js" path="C:/Users/Sean/EECS394/MPD/assets/www/app.js" title="app.js" tooltip="MPD/assets/www/app.js" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MPD/assets/www/app.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3544" selectionTopPixel="1511"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.ui.DefaultTextEditor" name="app2.js" partName="app2.js" path="C:/Users/Sean/EECS394/MPD/assets/www/app2.js" title="app2.js" tooltip="MPD/assets/www/app2.js" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MPD/assets/www/app2.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4251" selectionTopPixel="1496"/>
-</editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="events2.html" partName="events2.html" path="C:/Users/Sean/EECS394/MPD/assets/www/events2.html" title="events2.html" tooltip="MPD/assets/www/events2.html" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MPD/assets/www/events2.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="5" selectionOffset="2703" selectionTopPixel="806"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="851" selectionTopPixel="285"/>
 </editor>
 </editors>
 <views>
@@ -76,7 +61,7 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Errors (3 items)"/>
+<category IMemento.internal.id="Errors (1 item)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="746"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -85,6 +70,9 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="Aggregate for window 1319657557367">
@@ -114,9 +102,6 @@
 </xmlDefinedFilters>
 </customFilters>
 </viewState>
-</view>
-<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
-<viewState/>
 </view>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
@@ -253,6 +238,14 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/MPD/assets/www/app.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/MPD/assets/www/app2.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/MPD/assets/www/events2.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/MPD/assets/www/index.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/HelloPhoneGap/assets/www/lookup.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/MPD/assets/www/events.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/MPD/assets/www/app.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/MPD/assets/www/events.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/MPD/assets/www/app2.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/MPD/assets/www/app2.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/MPD/assets/www/event.html"/>
 </editors>
 <item historyLabel="index.html" index="0">
 <position info="not_deleted" x="1057" y="0"/>
@@ -317,8 +310,86 @@
 <item historyLabel="app.js" index="3">
 <position info="not_deleted" x="3544" y="0"/>
 </item>
-<item active="true" historyLabel="app2.js" index="4">
-<position info="not_deleted" x="4293" y="0"/>
+<item historyLabel="app2.js" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="app2.js" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="index.html" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="lookup.html" index="7">
+<position info="not_deleted" x="1890" y="0"/>
+</item>
+<item historyLabel="events.html" index="8">
+<position info="not_deleted" x="904" y="0"/>
+</item>
+<item historyLabel="app.js" index="9">
+<position info="not_deleted" x="3544" y="0"/>
+</item>
+<item historyLabel="events.html" index="10">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="app2.js" index="11">
+<position/>
+</item>
+<item historyLabel="events.html" index="10">
+<position info="not_deleted" x="564" y="0"/>
+</item>
+<item historyLabel="app2.js" index="11">
+<position/>
+</item>
+<item historyLabel="events.html" index="10">
+<position info="not_deleted" x="564" y="0"/>
+</item>
+<item historyLabel="app2.js" index="11">
+<position/>
+</item>
+<item historyLabel="events.html" index="10">
+<position info="not_deleted" x="564" y="0"/>
+</item>
+<item historyLabel="app2.js" index="11">
+<position/>
+</item>
+<item historyLabel="events.html" index="10">
+<position info="not_deleted" x="564" y="0"/>
+</item>
+<item historyLabel="app2.js" index="11">
+<position/>
+</item>
+<item historyLabel="events.html" index="10">
+<position info="not_deleted" x="564" y="0"/>
+</item>
+<item historyLabel="app2.js" index="11">
+<position/>
+</item>
+<item historyLabel="events.html" index="10">
+<position info="not_deleted" x="745" y="0"/>
+</item>
+<item historyLabel="app2.js" index="11">
+<position/>
+</item>
+<item historyLabel="events.html" index="10">
+<position info="not_deleted" x="745" y="0"/>
+</item>
+<item historyLabel="app2.js" index="11">
+<position info="not_deleted" x="4370" y="0"/>
+</item>
+<item historyLabel="events.html" index="10">
+<position info="not_deleted" x="745" y="0"/>
+</item>
+<item historyLabel="app2.js" index="12">
+<position info="not_deleted" x="3958" y="0"/>
+</item>
+<item historyLabel="event.html" index="13">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="app.js" index="9">
+<position info="not_deleted" x="851" y="0"/>
+</item>
+<item active="true" historyLabel="app2.js" index="12">
+<position info="not_deleted" x="4531" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -347,38 +418,17 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.browser.editorSupport" name="index.html" tooltip="MPD/assets/www/index.html">
 <persistable path="/MPD/assets/www/index.html"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="events2.html" tooltip="MPD/assets/www/events2.html">
-<persistable path="/MPD/assets/www/events2.html"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="app.js" tooltip="MPD/assets/www/app.js">
+<persistable path="/MPD/assets/www/app.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="event.html" tooltip="MPD/assets/www/event.html">
+<persistable path="/MPD/assets/www/event.html"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="app2.js" tooltip="MPD/assets/www/app2.js">
 <persistable path="/MPD/assets/www/app2.js"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="app.js" tooltip="MPD/assets/www/app.js">
-<persistable path="/MPD/assets/www/app.js"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="events.html" tooltip="MPD/assets/www/events.html">
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.browser.editorSupport" name="events.html" tooltip="MPD/assets/www/events.html">
 <persistable path="/MPD/assets/www/events.html"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="lookup.html" tooltip="HelloPhoneGap/assets/www/lookup.html">
-<persistable path="/HelloPhoneGap/assets/www/lookup.html"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="banner.jpg" tooltip="MPD/assets/www/banner.jpg">
-<persistable path="/MPD/assets/www/banner.jpg"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.browser.editorSupport" name="event.html" tooltip="MPD/assets/www/event.html">
-<persistable path="/MPD/assets/www/event.html"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="apptest.js" tooltip="MPD/assets/www/apptest.js">
-<persistable path="/MPD/assets/www/apptest.js"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.browser.editorSupport" name="events1.html" tooltip="MPD/assets/www/events1.html">
-<persistable path="/MPD/assets/www/events1.html"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="events1" tooltip="MPD/assets/www/events1">
-<persistable path="/MPD/assets/www/events1"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ant.ui.internal.editor.AntEditor" name="build.xml" tooltip="MPD/build.xml">
-<persistable path="/MPD/build.xml"/>
 </file>
 </mruList>
 </workbench>

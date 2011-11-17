@@ -121,18 +121,14 @@ function getEvents(){
 		timeout: 10000,
 		success: function(data, status){
 			for (var i = 0; i<data.length; i++){
-			
 				var container = document.getElementById('event_list');
 				var li = document.createElement('li');   
 				var aNode = document.createElement('a');
 				aNode.setAttribute('href','event.html?eventid='+data[i][0]);
-				//link.setAttribute('rel','external');
-				//link.setAttribute('data-role','button');
-				//link.appendChild(document.createTextNode(data[i][1] + " " + data[i][2]));
-				li.appendChild(document.createTextNode(data[i][1] + " " + data[i][2]));
+				aNode.appendChild(document.createTextNode(data[i][1] + " " + data[i][2]));
+				li.appendChild(aNode);
 				container.appendChild(li);
 				//$("#footer").before(li);	//add the link before the footer
-				//$("#footer").before(link);	//add the link before the footer
 				$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
 			}
 		},

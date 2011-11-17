@@ -180,8 +180,8 @@ function distanceBetweenCoords(p1, p2) {
     return Math.round(d);
 }
 
-function getGPSLocation() {		
-	navigator.geolocation.getCurrentPosition(GPSSuccess, GPSError, {enableHighAccuracy: true});
+function getGPSLocation() {	
+		navigator.geolocation.getCurrentPosition(GPSSuccess, GPSError, {enableHighAccuracy: true});
 }
 function GPSError(error) {
     alert('code: '    + error.code    + '\n' +
@@ -193,6 +193,5 @@ function GPSSuccess(position) {
 	var userCoords = {};
 	userCoords.latitude = userLat;
 	userCoords.longitude = userLong;
-	listLocationsForEvent(userCoords)
-	//var distance = distanceBetweenCoords(userCoords, stopCoords);
+	listLocationsForEvent(userCoords);
 }

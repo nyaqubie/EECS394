@@ -19,7 +19,7 @@
 				<a href="events.html" rel='external' data-role='button'>Back</a>
 			</div>
 			<script type="text/javascript">
-				 getGPSLocation();
+				document.addEventListener("deviceready", getGPSLocation, false);
 			</script>
 			
 			<div data-role="footer" id="footer" data-theme="a">

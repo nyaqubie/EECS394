@@ -80,6 +80,7 @@ function showLocationInfo(){
 			var paragraph = document.createElement('p');
 			paragraph.appendChild(document.createTextNode(address));
 			$("#footer").before(paragraph);
+			$("html").trigger('create');
 	};
 	callAjax(url,data,funct);
 }

@@ -24,7 +24,7 @@ function getEvents(){
 	var funct = function (data, status){
 		for (var i = 0; i<data.length; i++){
 			var link = document.createElement('a');
-			link.setAttribute('href','event.html?eventid='+data[i][0]);
+			link.setAttribute('href','locations.html?eventid='+data[i][0]);
 			link.setAttribute('rel','external');
 			link.setAttribute('data-role','button');
 			link.appendChild(document.createTextNode(data[i][1] + " " + data[i][2]));
@@ -174,7 +174,7 @@ function GPSSuccess(position) {
 function createBackButton(){
 	var eveid = getQueryVariable('eventid');
 	var backlink = document.createElement('a');
-	backlink.setAttribute('href','event.html?eventid=' + eveid);
+	backlink.setAttribute('href','locations.html?eventid=' + eveid);
 	backlink.setAttribute('rel','external');
 	backlink.setAttribute('data-role','button');
 	backlink.appendChild(document.createTextNode('Back'));

@@ -16,7 +16,7 @@ describe("createBackButton tests", function() {
 	
 	it("should create a button as a sibling of 'h1#events' with the proper href attribute", function() {
 		createBackButton()	
-		expect($('#events').next().attr('href')).toEqual('event.html?eventid=11')
+		expect($('#events').next().attr('href')).toEqual('locations.html?eventid=11')
 	});
 	
 	afterEach(function() {

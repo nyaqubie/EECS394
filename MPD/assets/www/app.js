@@ -7,12 +7,12 @@ function callAjax(url, data, funct){
 		url: url,
 		type: 'GET',
 		dataType: 'jsonp',
-		data:data,
+		data: data,
 		jsonp: 'jsoncallback',
 		timeout: 10000,
 		success: funct,
 		error: function(){
-			alert('bad')
+			alert('Ajax call failed')
 		}
 	});
 }
@@ -42,7 +42,6 @@ function listLocationsForEvent(userCoords){
 	var data={eventid: eventid};
 	var funct = function(data, status){
 		for (var i = 0; i<data.length; i++){
-			var link = document.createElement('a');
 			var name = data[i][1];
 			var address = data[i][2];
 			var geolocation = data[i][3];
@@ -51,8 +50,10 @@ function listLocationsForEvent(userCoords){
 			var locationCoords = {};
 			locationCoords.latitude = geolocation.split(',')[0];
 			locationCoords.longitude = geolocation.split(',')[1];
+			
 			var distance = distanceBetweenCoords(locationCoords, userCoords);
 			
+			var link = document.createElement('a');
 			link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0]);
 			link.setAttribute('rel','external');
 			link.setAttribute('data-role','button');
@@ -74,11 +75,11 @@ function showLocationInfo(){
 			
 			var header = document.createElement('h2');
 			header.appendChild(document.createTextNode(name));
-			$("#footer").before(header);	//add the link before the footer
+			$("#footer").before(header);
 			
 			var paragraph = document.createElement('p');
 			paragraph.appendChild(document.createTextNode(address));
-			$("#footer").before(paragraph);	//add the link before the footer
+			$("#footer").before(paragraph);
 	};
 	callAjax(url,data,funct);
 }
@@ -91,7 +92,7 @@ function createInterestButton(){
 		var link = document.createElement('a');
 		link.setAttribute('rel','external');
 		link.setAttribute('data-role','button');
-		link.setAttribute('id','commitlink');
+		link.setAttribute('id','interestlink');
 		if (data == 0){
 			link.setAttribute('onclick','showInterestInLocation()');
 			link.appendChild(document.createTextNode('Show interest in this location'));
@@ -111,9 +112,9 @@ function showInterestInLocation(){
 	var url = 'http://69.164.198.224/showinterest';
 	var data = {uuid: device.uuid, locationid: getQueryVariable('locationid'), eventid: getQueryVariable('eventid')};
 	var funct =  function(data, status){
-		$('#commitlink').remove();
+		$('#interestlink').remove();
 		var link = document.createElement('a');
-		link.setAttribute('id','commitlink');
+		link.setAttribute('id','interestlink');
 		link.setAttribute('rel','external');
 		link.setAttribute('data-role','button');
 		link.setAttribute('onclick','removeInterestInLocation()');
@@ -129,9 +130,9 @@ function removeInterestInLocation(){
 	var url = 'http://69.164.198.224/removeinterest';
 	var data = {uuid: device.uuid, locationid: getQueryVariable('locationid'), eventid: getQueryVariable('eventid')};
 	var funct = function(data, status){
-		$('#commitlink').remove();
+		$('#interestlink').remove();
 		var link = document.createElement('a');
-		link.setAttribute('id','commitlink');
+		link.setAttribute('id','interestlink');
 		link.setAttribute('rel','external');
 		link.setAttribute('data-role','button');
 		link.setAttribute('onclick','showInterestInLocation()');

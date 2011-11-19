@@ -5,6 +5,7 @@
 function callAjax(url, data, funct){
 	$.ajax({
 		url: url,
+		cache:false,
 		type: 'GET',
 		dataType: 'jsonp',
 		data: data,

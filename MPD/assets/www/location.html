@@ -17,10 +17,7 @@
 				<h1 id='events'>Location</h1>
 				<script type="text/javascript">
 					createBackButton();
-				</script>
-								
-				<script type="text/javascript">
-					showLocationInfo();
+					document.addEventListener("deviceready", showLocationInfo, false);
 					document.addEventListener("deviceready", createInterestButton, false);
 				</script>
 			</div>

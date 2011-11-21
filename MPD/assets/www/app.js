@@ -50,7 +50,7 @@ function listLocationsForEvent(userCoords){
 			var distance = data[i][4];
 			
 			var link = document.createElement('a');
-			link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0]);
+			link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0] + '&numberinterested=' + numinterested + '&address=' + address + '&name=' + name);
 			link.setAttribute('rel','external');
 			link.setAttribute('data-role','button');
 			link.appendChild(document.createTextNode(name + ' ' + distance + 'mi ' + numinterested + ' interested' ));
@@ -63,45 +63,37 @@ function listLocationsForEvent(userCoords){
 
 //Show the information for one location
 function showLocationInfo(){
-	var url = 'http://69.164.198.224/getlocation';
-	var data = {locationid: getQueryVariable('locationid')};
-	var funct = function(data, status){
-			var name = data[0][0];
-			var address = data[0][1];
-			
-			var header = document.createElement('h2');
-			header.appendChild(document.createTextNode(name));
-			$("#footer").before(header);
-			
-			var paragraph = document.createElement('p');
-			paragraph.appendChild(document.createTextNode(address));
-			$("#footer").before(paragraph);
-			$("html").trigger('create');
-	};
-	callAjax(url,data,funct);
-}
+	//Get data from URL
+	var name = unescape(getQueryVariable('name'));
+	var address = unescape(getQueryVariable('address'));
+	var numberinterested = unescape(getQueryVariable('numberinterested'));
 
-//Determine if the user has expressed interest, show the appropriate button
-function createInterestButton(){
-	var url = 'http://69.164.198.224/checkinterest';
-	var data = {uuid: device.uuid, locationid: getQueryVariable('locationid'), eventid: getQueryVariable('eventid')};
-	var funct = function(data, status){
-		var link = document.createElement('a');
-		link.setAttribute('rel','external');
-		link.setAttribute('data-role','button');
-		link.setAttribute('id','interestlink');
-		if (data == 0){
-			link.setAttribute('onclick','showInterestInLocation()');
-			link.appendChild(document.createTextNode('Show interest in this location'));
-		}
-		else{
-			link.setAttribute('onclick','removeInterestInLocation()');
-			link.appendChild(document.createTextNode('You are interested in this location'));
-		}
-		$("#footer").before(link);	//add the link before the footer
-		$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
+	//Display name
+	var header = document.createElement('h2');	
+	header.appendChild(document.createTextNode(name));
+	$("#footer").before(header);
+	
+	//Display address
+	var paragraph = document.createElement('p');
+	paragraph.appendChild(document.createTextNode(address));
+	$("#footer").before(paragraph);
+	$("html").trigger('create');
+	
+	//Display interest button
+	var link = document.createElement('a');
+	link.setAttribute('rel','external');
+	link.setAttribute('data-role','button');
+	link.setAttribute('id','interestlink');
+	if (numberinterested == 0){
+		link.setAttribute('onclick','showInterestInLocation()');
+		link.appendChild(document.createTextNode('Show interest in this location'));
 	}
-	callAjax(url,data,funct);
+	else{
+		link.setAttribute('onclick','removeInterestInLocation()');
+		link.appendChild(document.createTextNode('You are interested in this location'));
+	}
+	$("#footer").before(link);	//add the link before the footer
+	$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
 }
 
 //This function allows the user to express interest in a specific location+event, updates the button accordingly

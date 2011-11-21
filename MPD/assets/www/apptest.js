@@ -24,7 +24,7 @@ describe("createBackButton tests", function() {
 	});
 });
 
-describe("distanceBetweenCoords tests", function(){
+/*describe("distanceBetweenCoords tests", function(){
 	it("should return '3265' when geocoords '12,14' and '-32,-4' are given", function() {
 		var locationCoords1 = {};
 		locationCoords1.latitude = '12';
@@ -37,7 +37,7 @@ describe("distanceBetweenCoords tests", function(){
 		distance = distanceBetweenCoords(locationCoords1, locationCoords2)
 		expect(distance).toEqual(3265)
 	});
-});
+});*/
 
 /*describe("getEvents tests", function(){
 	beforeEach(function() {	

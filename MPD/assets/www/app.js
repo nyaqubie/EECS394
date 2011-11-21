@@ -5,7 +5,7 @@
 function callAjax(url, data, funct){
 	$.ajax({
 		url: url,
-		cache:false,
+		//cache:false,
 		type: 'GET',
 		dataType: 'jsonp',
 		data: data,
@@ -38,27 +38,26 @@ function getEvents(){
 
 //List buttons for all of the locations for an event
 function listLocationsForEvent(userCoords){
+	console.log(userCoords)
 	var eventid = getQueryVariable('eventid');
-	var url='http://69.164.198.224/getlocations';
-	var data={eventid: eventid};
+	var url='http://69.164.198.224/getlocationsinradius';
+	var data={eventid: eventid, radius: 1, geolocation: userCoords};
+
 	var funct = function(data, status){
 		for (var i = 0; i<data.length; i++){
+		
+			console.log(data[i])
+		
 			var name = data[i][1];
 			var address = data[i][2];
-			var geolocation = data[i][3];
-			var numinterested = data[i][4];
-			
-			var locationCoords = {};
-			locationCoords.latitude = geolocation.split(',')[0];
-			locationCoords.longitude = geolocation.split(',')[1];
-			
-			var distance = distanceBetweenCoords(locationCoords, userCoords);
+			var numinterested = data[i][3];
+			var distance = data[i][4];
 			
 			var link = document.createElement('a');
 			link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0]);
 			link.setAttribute('rel','external');
 			link.setAttribute('data-role','button');
-			link.appendChild(document.createTextNode(name + ' ' + distance + 'mi, ' + numinterested + ' interested' ));
+			link.appendChild(document.createTextNode(name + ' ' + distance + 'mi ' + numinterested + ' interested' ));
 			$("#footer").before(link);	//add the link before the footer
 			$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
 		}
@@ -164,7 +163,7 @@ function GPSSuccess(position) {
 	var userCoords = {};
 	userCoords.latitude = userLat;
 	userCoords.longitude = userLong;
-	listLocationsForEvent(userCoords);
+	listLocationsForEvent(position.coords.latitude + ',' + position.coords.longitude);
 }
 
 

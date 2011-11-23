@@ -30,7 +30,6 @@ function getEvents(){
 			link.setAttribute('rel','external');
 			link.appendChild(document.createTextNode(data[i][1] + " " + data[i][2]));
 			newLocItem.appendChild(link);
-
 			$("#locas").append(newLocItem);	//add the link before the footer
 			$("html").trigger('create');	//needed to apply jqmobile style changes on dynamic content
 		}
@@ -84,7 +83,14 @@ function showLocationInfo(){
 	var name = unescape(getQueryVariable('name'));
 	var address = unescape(getQueryVariable('address'));
 	var numberinterested = unescape(getQueryVariable('numberinterested'));
-
+	
+	//Display Main Menu Button
+	var mainmenu = document.createElement('a');
+	mainmenu.setAttribute('rel','external');
+	mainmenu.setAttribute('data-role','button');
+	mainmenu.setAttribute('href', 'index.html');
+	mainmenu.appendChild(createTextNode("Main Menu"));
+	
 	//Display name
 	var header = document.createElement('h2');	
 	header.appendChild(document.createTextNode(name));

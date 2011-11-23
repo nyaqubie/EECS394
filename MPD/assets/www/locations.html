@@ -4,7 +4,7 @@
 		<title>Event Tracker</title> 
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
-		<link rel="stylesheet" href="styles/jquery.mobile-1.0.min.css" />
+		<link rel="stylesheet" href="styles/jquery.mobile-1.0rc2.min.css" />
 		<script type="text/javascript" charset="utf-8" src="lib/phonegap-1.2.0.js"></script>
 		<script type="text/javascript" src="lib/jquery-1.7.min.js"></script>
 		<script type="text/javascript" src="lib/jquery.mobile-1.0.min.js"></script>	
@@ -17,11 +17,22 @@
 				<h1>Locations</h1>
 				<a href="events.html" rel='external' data-role='button'>Back</a>
 			</div>
-			<script type="text/javascript">
-				document.addEventListener("deviceready", getGPSLocation, false);
-			</script>
 			
-			<div data-role="footer" data-position="fixed" id="footer" data-theme="a">
+			<div id="test" data-role="content" data-theme="b">
+				<div data-role="fieldcontain">
+				   <label for="slider">Max distance:</label>
+				   <input type="range" name="slider" id="slider" value="20" min="0" max="50"  />
+				</div>
+				
+				<ul id="locas" data-role="listview" data-theme="g" data-filter="true">
+					<script type="text/javascript">
+						document.addEventListener("deviceready", getGPSLocation, false);
+						//$( ".slider" ).bind( "change", getGPSLocation());
+					</script>
+				</ul>
+			</div>
+			
+			<div data-role="footer" id="footer" data-theme="a">
 				<h4>Footer</h4>
 			</div>
 		</div>

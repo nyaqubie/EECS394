@@ -24,14 +24,18 @@ function getEvents(){
 	var data = '';
 	var funct = function (data, status){
 		for (var i = 0; i<data.length; i++){
+			var newLocItem = document.createElement('li');
 			var link = document.createElement('a');
 			link.setAttribute('href','locations.html?eventid='+data[i][0]);
 			link.setAttribute('rel','external');
-			link.setAttribute('data-role','button');
 			link.appendChild(document.createTextNode(data[i][1] + " " + data[i][2]));
-			$("#footer").before(link);	//add the link before the footer
+			newLocItem.appendChild(link);
+
+			$("#locas").append(newLocItem);	//add the link before the footer
 			$("html").trigger('create');	//needed to apply jqmobile style changes on dynamic content
 		}
+		$("#locas").listview('refresh')
+
 	};
 	callAjax(url,data,funct);
 }
@@ -42,8 +46,6 @@ function listLocationsForEvent(userCoords){
 	var url='http://69.164.198.224/getlocationsinradius';
 	var rad = document.getElementById('slider').getAttribute('value');
 	var data={eventid: eventid, radius: rad, geolocation: userCoords};
-	
-	var loc_list = document.getElementById('locas');
 	var funct = function(data, status){
 		for (var i = 0; i<data.length; i++){
 			var name = data[i][1];

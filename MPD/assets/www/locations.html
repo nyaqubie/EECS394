@@ -19,16 +19,15 @@
 				<a href="events.html" rel='external'>Home</a>
 			</div>
 			
-			<div data-role="fieldcontain">
-			   <label for="slider">Max distance:</label>
-			   <input type="range" name="slider" id="slider" value="20" min="0" max="50"  />
-			</div>
+			<div data-role="content">
+				<div data-role="fieldcontain">
+				   <label for="slider">Max distance:</label>
+				   <input type="range" name="slider" id="slider" value="5" min="1" max="50"  />
+				</div>
 			
-			<div data-role="content" data-theme="g">
 				<ul id="locas" data-role="listview" data-theme="g" data-filter="true">
 					<script type="text/javascript">
 						document.addEventListener("deviceready", getGPSLocation, false);
-						//$( ".slider" ).bind( "change", getGPSLocation());
 					</script>
 				</ul>
 			</div>

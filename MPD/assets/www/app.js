@@ -39,23 +39,25 @@ function getEvents(){
 	callAjax(url,data,funct);
 }
 
-//List buttons for all of the locations for an event
+//List all of the locations for an event
 function listLocationsForEvent(userCoords){
 	var eventid = getQueryVariable('eventid');
 	var url='http://69.164.198.224/getlocationsinradius';
-	var rad = document.getElementById('slider').getAttribute('value');
-	var data={eventid: eventid, radius: rad, geolocation: userCoords};
+	var rad = $('#slider').val();
+	console.log(rad)
+	var data={eventid: eventid, radius: rad, geolocation: userCoords, uuid: device.uuid};
 	var funct = function(data, status){
 		for (var i = 0; i<data.length; i++){
 			var name = data[i][1];
 			var address = data[i][2];
 			var numinterested = data[i][3];
+			var userinterested = data[i][5];
 			var distance = Math.round(data[i][4] * 100) / 100;
 			
 			var newLocItem = document.createElement('li');
 			var link = document.createElement('a');
 			
-			link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0] + '&numberinterested=' + numinterested + '&address=' + address + '&name=' + name);
+			link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0] + '&numberinterested=' + numinterested + '&address=' + address + '&name=' + name + '&userinterested=' + userinterested);
 			link.setAttribute('rel','external');
 			
 			var headerName = document.createElement('h2');
@@ -74,23 +76,22 @@ function listLocationsForEvent(userCoords){
 
 			link.appendChild(headerName);
 			link.appendChild(addressP);
-			link.appendChild(countBubble);
-			
+			link.appendChild(countBubble);			
 			newLocItem.appendChild(link);
-			
-			$("#locas").append(newLocItem);	//add the link to list
-			//$("html").trigger('create');	//needed to apply jqmobile style changes on dynamic content
+
+			$("#locas").append(newLocItem);
 		}
-		$("#locas").listview('refresh')
+		
+		//$("html").trigger('create');
+		$("#locas").listview('refresh');
+		
+		$( "#slider" ).bind("change",  function () {
+			$( "#slider" ).unbind();
+			$('li').remove();
+			listLocationsForEvent(userCoords);
+		});
 	}
 	callAjax(url,data,funct);
-}
-
-function reloadStylesheets() {
-    var queryString = '?reload=' + new Date().getTime();
-    $('link[rel="stylesheet"]').each(function () {
-        this.href = this.href.replace(/\?.*|$/, queryString);
-    });
 }
 
 //Show the information for one location
@@ -99,7 +100,8 @@ function showLocationInfo(){
 	var name = unescape(getQueryVariable('name'));
 	var address = unescape(getQueryVariable('address'));
 	var numberinterested = unescape(getQueryVariable('numberinterested'));
-	
+	var userinterested = unescape(getQueryVariable('userinterested'));
+
 	//Display name
 	var header = document.createElement('h2');	
 	header.appendChild(document.createTextNode(name));
@@ -109,23 +111,56 @@ function showLocationInfo(){
 	var paragraph = document.createElement('p');
 	paragraph.appendChild(document.createTextNode(address));
 	$("#footer").before(paragraph);
-	$("html").trigger('create');
 	
-	//Display interest button
-	var link = document.createElement('a');
-	link.setAttribute('rel','external');
-	link.setAttribute('data-role','button');
-	link.setAttribute('id','interestlink');
-	if (numberinterested == 0){
-		link.setAttribute('onclick','showInterestInLocation()');
-		link.appendChild(document.createTextNode('Show interest in this location'));
+	//Add a linebreak
+	var brk = document.createElement('br');
+	$("#footer").before(brk);
+	
+	//Display interest toggle
+	var slider = document.createElement('select');
+	slider.setAttribute('name','slider');
+	slider.setAttribute('data-theme','c');
+	slider.setAttribute('id','flip-a');
+	slider.setAttribute('data-role','slider');
+	
+	var optionN = document.createElement('option');
+	optionN.appendChild(document.createTextNode('No'));
+	optionN.setAttribute('value','no');
+	slider.appendChild(optionN)
+	
+	var optionY = document.createElement('option');
+	optionY.appendChild(document.createTextNode('Yes'));
+	optionY.setAttribute('value','yes');
+	slider.appendChild(optionY)
+	
+	var label = document.createElement('label');
+	label.appendChild(document.createTextNode('Interested?'));
+	label.setAttribute('for','flip-a');
+	
+	$("#footer").before(label);
+	$("#footer").before(slider);
+	
+	
+	
+	//Select initial button state
+	if(userinterested == 0){
+		$('#flip-a').val('no');
 	}
 	else{
-		link.setAttribute('onclick','removeInterestInLocation()');
-		link.appendChild(document.createTextNode('You are interested in this location'));
+		$('#flip-a').val('yes');
 	}
-	$("#footer").before(link);	//add the link before the footer
-	$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
+	
+	//Toggle change handler
+	$('#flip-a').change( function(){
+		if($('#flip-a').val() == 'yes'){
+			showInterestInLocation();
+		}
+		else{
+			removeInterestInLocation();
+		}
+	});
+	
+	$("html").trigger('create')
 }
 
 //This function allows the user to express interest in a specific location+event, updates the button accordingly
@@ -133,15 +168,6 @@ function showInterestInLocation(){
 	var url = 'http://69.164.198.224/showinterest';
 	var data = {uuid: device.uuid, locationid: getQueryVariable('locationid'), eventid: getQueryVariable('eventid')};
 	var funct =  function(data, status){
-		$('#interestlink').remove();
-		var link = document.createElement('a');
-		link.setAttribute('id','interestlink');
-		link.setAttribute('rel','external');
-		link.setAttribute('data-role','button');
-		link.setAttribute('onclick','removeInterestInLocation()');
-		link.appendChild(document.createTextNode('You are interested in this location'));
-		$("#footer").before(link);	//add the link before the footer
-		$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
 	};
 	callAjax(url,data,funct);
 }
@@ -151,15 +177,6 @@ function removeInterestInLocation(){
 	var url = 'http://69.164.198.224/removeinterest';
 	var data = {uuid: device.uuid, locationid: getQueryVariable('locationid'), eventid: getQueryVariable('eventid')};
 	var funct = function(data, status){
-		$('#interestlink').remove();
-		var link = document.createElement('a');
-		link.setAttribute('id','interestlink');
-		link.setAttribute('rel','external');
-		link.setAttribute('data-role','button');
-		link.setAttribute('onclick','showInterestInLocation()');
-		link.appendChild(document.createTextNode('Show interest in this location'));
-		$("#footer").before(link);	//add the link before the footer
-		$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
 	}
 	callAjax(url,data,funct);
 }

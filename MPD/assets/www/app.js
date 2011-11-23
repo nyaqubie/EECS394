@@ -41,7 +41,6 @@ function listLocationsForEvent(userCoords){
 	var eventid = getQueryVariable('eventid');
 	var url='http://69.164.198.224/getlocationsinradius';
 	var rad = document.getElementById('slider').getAttribute('value');
-	alert(rad);
 	var data={eventid: eventid, radius: rad, geolocation: userCoords};
 	
 
@@ -59,7 +58,7 @@ function listLocationsForEvent(userCoords){
 			var link = document.createElement('a');
 			link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0] + '&numberinterested=' + numinterested + '&address=' + address + '&name=' + name);
 			link.setAttribute('rel','external');
-			//link.setAttribute('data-role','button');
+			link.setAttribute('data-role','button');
 			link.appendChild(document.createTextNode(name + ' | ' + distance + 'mi | ' + numinterested + ' interested' ));
 			//link.appendChild(document.createTextNode(name));
 			//link.html(name);
@@ -69,7 +68,7 @@ function listLocationsForEvent(userCoords){
 			//newLocItem.innerHTML = name;
 			
 			newLocItem.appendChild(link);
-			loc_list.appendChild(newLocItem);
+			loc_list.appendChild(newLocItSem);
 			//loc_list.insertAdjacentHTML('<li>' + name + '</li>');
 			
 			//$("#footer").before(link);	//add the link before the footer

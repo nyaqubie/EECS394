@@ -115,6 +115,7 @@ function showLocationInfo(){
 		link.setAttribute('onclick','removeInterestInLocation()');
 		link.appendChild(document.createTextNode('You are interested in this location'));
 	}
+	$("#footer").before(mainmenu);
 	$("#footer").before(link);	//add the link before the footer
 	$("html").trigger('create')	//needed to apply jqmobile style changes on dynamic content
 }

@@ -53,13 +53,13 @@ function listLocationsForEvent(userCoords){
 			var distance = Math.round(data[i][4] * 100) / 100;
 			
 			//var loc_list = document.getElementById('locas');
-			var newSpan = document.createElement('span');
+			//var newSpan = document.createElement('span');
 			var newLocItem = document.createElement('li');
 			
 			var link = document.createElement('a');
 			link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0] + '&numberinterested=' + numinterested + '&address=' + address + '&name=' + name);
 			link.setAttribute('rel','external');
-			link.setAttribute('data-role','button');
+			//link.setAttribute('data-role','button');
 			//link.appendChild(document.createTextNode(name + ' | ' + distance + 'mi | ' + numinterested + ' interested' ));
 			link.appendChild(document.createTextNode(name));
 			//link.html(name);
@@ -69,12 +69,12 @@ function listLocationsForEvent(userCoords){
 			//newLocItem.innerHTML = name;
 			
 			newLocItem.appendChild(link);
-			newSpan.appendChild(newLocItem);
-			loc_list.appendChild(newSpan);
+			//newSpan.appendChild(newLocItem);
+			//loc_list.appendChild(newSpan);
 			//loc_list.insertAdjacentHTML('<li>' + name + '</li>');
 			
-			//$("#footer").before(link);	//add the link before the footer
-			$("html").trigger('reload');	//needed to apply jqmobile style changes on dynamic content
+			$("#footer").before(newLocItem);	//add the link before the footer
+			$("html").trigger('create');	//needed to apply jqmobile style changes on dynamic content
 			//loc_list.trigger('create');
 		}
 		loc_list.reload(true);

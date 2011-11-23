@@ -57,15 +57,31 @@ function listLocationsForEvent(userCoords){
 			
 			link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0] + '&numberinterested=' + numinterested + '&address=' + address + '&name=' + name);
 			link.setAttribute('rel','external');
-			link.appendChild(document.createTextNode(name));
+			
+			var headerName = document.createElement('h2');
+			headerName.appendChild(document.createTextNode(name));
+			
+			var addressP = document.createElement('p');
+			addressP.appendChild(document.createTextNode(address));
+		
+			var countBubble = document.createElement('span');
+			countBubble.setAttribute('class','ui-li-count');
+			countBubble.appendChild(document.createTextNode(distance + 'mi' + '  |  ' + 'Interest: ' + numinterested));
+			
+			//var distBubble = document.createElement('span');
+			//distBubble.setAttribute('class','ui-li-count');
+			//distBubble.appendChild(document.createTextNode(distance + 'mi'));
+
+			link.appendChild(headerName);
+			link.appendChild(addressP);
+			link.appendChild(countBubble);
 			
 			newLocItem.appendChild(link);
 			
-			$("#locas").append(newLocItem);	//add the link before the footer
-			$("html").trigger('create');	//needed to apply jqmobile style changes on dynamic content
+			$("#locas").append(newLocItem);	//add the link to list
+			//$("html").trigger('create');	//needed to apply jqmobile style changes on dynamic content
 		}
 		$("#locas").listview('refresh')
-
 	}
 	callAjax(url,data,funct);
 }

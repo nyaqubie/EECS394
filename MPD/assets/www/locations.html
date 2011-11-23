@@ -23,13 +23,15 @@
 			   <label for="slider">Max distance:</label>
 			   <input type="range" name="slider" id="slider" value="20" min="0" max="50"  />
 			</div>
-
-			<ul id="locas" data-role="listview" data-theme="g" data-filter="true">
-				<script type="text/javascript">
-					document.addEventListener("deviceready", getGPSLocation, false);
-					//$( ".slider" ).bind( "change", getGPSLocation());
-				</script>
-			</ul>
+			
+			<div data-role="content" data-theme="g">
+				<ul id="locas" data-role="listview" data-theme="g" data-filter="true">
+					<script type="text/javascript">
+						document.addEventListener("deviceready", getGPSLocation, false);
+						//$( ".slider" ).bind( "change", getGPSLocation());
+					</script>
+				</ul>
+			</div>
 			
 			<div data-role="footer" id="footer" data-theme="a">
 			</div>

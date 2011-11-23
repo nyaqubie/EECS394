@@ -68,7 +68,7 @@ function listLocationsForEvent(userCoords){
 			//newLocItem.innerHTML = name;
 			
 			newLocItem.appendChild(link);
-			loc_list.appendChild(newLocItSem);
+			loc_list.appendChild(newLocItem);
 			//loc_list.insertAdjacentHTML('<li>' + name + '</li>');
 			
 			//$("#footer").before(link);	//add the link before the footer

@@ -43,7 +43,6 @@ function listLocationsForEvent(userCoords){
 	var rad = document.getElementById('slider').getAttribute('value');
 	var data={eventid: eventid, radius: rad, geolocation: userCoords};
 	
-
 	var loc_list = document.getElementById('locas');
 	var funct = function(data, status){
 		for (var i = 0; i<data.length; i++){
@@ -52,33 +51,20 @@ function listLocationsForEvent(userCoords){
 			var numinterested = data[i][3];
 			var distance = Math.round(data[i][4] * 100) / 100;
 			
-			//var loc_list = document.getElementById('locas');
-			//var newSpan = document.createElement('span');
 			var newLocItem = document.createElement('li');
-			
 			var link = document.createElement('a');
+			
 			link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0] + '&numberinterested=' + numinterested + '&address=' + address + '&name=' + name);
 			link.setAttribute('rel','external');
-			//link.setAttribute('data-role','button');
-			//link.appendChild(document.createTextNode(name + ' | ' + distance + 'mi | ' + numinterested + ' interested' ));
 			link.appendChild(document.createTextNode(name));
-			//link.html(name);
-			
-			//newLocItem.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0] + '&numberinterested=' + numinterested + '&address=' + address + '&name=' + name);
-			//newLocItem.setAttribute('rel','external');
-			//newLocItem.innerHTML = name;
 			
 			newLocItem.appendChild(link);
-			//newSpan.appendChild(newLocItem);
-			//loc_list.appendChild(newSpan);
-			//loc_list.insertAdjacentHTML('<li>' + name + '</li>');
 			
-			$("#footer").before(newLocItem);	//add the link before the footer
+			$("#locas").append(newLocItem);	//add the link before the footer
 			$("html").trigger('create');	//needed to apply jqmobile style changes on dynamic content
-			//loc_list.trigger('create');
 		}
-		loc_list.reload(true);
-		reloadStylesheets();
+		$("#locas").listview('refresh')
+
 	}
 	callAjax(url,data,funct);
 }

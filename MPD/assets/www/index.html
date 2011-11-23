@@ -9,6 +9,8 @@
 		<script type="text/javascript" src="lib/jquery-1.7.min.js"></script>
 		<script type="text/javascript" src="lib/jquery.mobile-1.0.min.js"></script>	
 		<script type="text/javascript" charset="utf-8" src="app.js"></script>
+		<script language="JavaScript">
+</script>
 	</head> 
 	
 	<body> 
@@ -16,18 +18,9 @@
 			<div data-role="header" data-theme="a">
 				<h1>Mob Aggregator</h1>
 			</div>
-			
-			<br />
-			<a href="events.html" rel='external' data-role='button'>Events</a>
-
-			<!--<a href="interest.html" rel='external' data-role='button'>Interested Events</a>-->
-
-			<!--<div data-role="content">
-				<div id="banner">
-	              <h2>Mob App 2011</h2>
-	           Need to make this not overlap beyond the screen's width   <center><img style='width:300px' src='banner.jpg'></center>
-	        </div>         -->  
-			
+		    <body onload="timer=setTimeout('move()',3000)">
+			<script type="text/javascript">window.setTimeout("document.getElementById('banner').style.display='none';", 3000); </script>
+            <img id="banner" src="banner.jpg" width="480" height="480" border="0" alt="" />
 			<div data-role="footer" data-position="fixed" data-theme="a">
 			</div>
 		</div>

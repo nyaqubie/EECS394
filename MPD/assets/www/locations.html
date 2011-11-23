@@ -14,24 +14,22 @@
 	<body> 
 		<div data-role="page" id="index" data-theme="b">
 			<div data-role="header" id='header' data-theme="a">
-				<h1>Locations</h1>
-				<a href="events.html" rel='external' data-role='button'>Back</a>
+				<h1>Nearby Locations</h1>
+				<a href="events.html" rel='external'>Back</a>
+				<a href="events.html" rel='external'>Home</a>
 			</div>
 			
-			<div data-role="content" data-theme="b">
-				<div data-role="fieldcontain">
-				   <label for="slider">Max distance:</label>
-				   <input type="range" name="slider" id="slider" value="20" min="0" max="50"  />
-				</div>
-
-				<ul id="locas" data-role="listview" data-theme="g" data-filter="true">
-					<li><a href="index.html">Main Menu</a>
-					<script type="text/javascript">
-						document.addEventListener("deviceready", getGPSLocation, false);
-						//$( ".slider" ).bind( "change", getGPSLocation());
-					</script>
-				</ul>
+			<div data-role="fieldcontain">
+			   <label for="slider">Max distance:</label>
+			   <input type="range" name="slider" id="slider" value="20" min="0" max="50"  />
 			</div>
+
+			<ul id="locas" data-role="listview" data-theme="g" data-filter="true">
+				<script type="text/javascript">
+					document.addEventListener("deviceready", getGPSLocation, false);
+					//$( ".slider" ).bind( "change", getGPSLocation());
+				</script>
+			</ul>
 			
 			<div data-role="footer" id="footer" data-theme="a">
 			</div>

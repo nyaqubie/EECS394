@@ -14,16 +14,30 @@
 	</head> 
 	
 	<body> 
-		<div data-role="page" id="index" data-theme="b">
-			<div data-role="header" data-theme="a">
-				<h1>Mob Aggregator</h1>
+		<div data-role="page" style= 'background-color:black' id="index" data-theme="b">
+
+            <img style="min-width:100%; min-height:100%;"id="banner" src="banner.jpg" width="300" height="300"/>
+			
+			<script type="text/javascript">
+				$(document).ready(function(){
+					document.addEventListener("deviceready", getEvents, false);
+					$('#banner').delay(3000).fadeOut(1500);
+				});
+			</script>
+			
+			<div data-role="header" id='header' data-theme="a">
+				<h1>Upcoming Events</h1>
+				<a href="events.html" rel='external'>Back</a>
+				<a href="events.html" rel='external'>Home</a>
 			</div>
-		    <body onload="timer=setTimeout('move()',3000)">
-			<script type="text/javascript">window.setTimeout("document.getElementById('banner').style.display='none';", 3000); </script>
-            <img id="banner" src="banner.jpg" width="480" height="480" border="0" alt="" />
-			<div data-role="footer" data-position="fixed" data-theme="a">
+			
+			<br />
+			
+			<ul id="locas" data-role="listview" data-theme="g" data-filter="true">
+			</ul>
+
+			<div data-role="footer" data-position="fixed" id="footer" data-theme="a">
 			</div>
 		</div>
 	</body>
-	
 </html>

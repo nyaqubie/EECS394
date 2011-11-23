@@ -199,7 +199,6 @@ function getQueryVariable(variable) {
 }
 
 // This function forward index page to events page after northwestern logo disappear
-var time=null;
 function move() {
-window.location = 'events.html'
+	window.location = 'events.html'
 }

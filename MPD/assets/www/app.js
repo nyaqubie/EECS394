@@ -39,18 +39,19 @@ function getEvents(){
 	callAjax(url,data,funct);
 }
 
-//List buttons for all of the locations for an event
+//List all of the locations for an event
 function listLocationsForEvent(userCoords){
 	var eventid = getQueryVariable('eventid');
 	var url='http://69.164.198.224/getlocationsinradius';
-	var rad = document.getElementById('slider').getAttribute('value');
+	var rad = $('#slider').val();
+	console.log(rad)
 	var data={eventid: eventid, radius: rad, geolocation: userCoords, uuid: device.uuid};
 	var funct = function(data, status){
 		for (var i = 0; i<data.length; i++){
 			var name = data[i][1];
 			var address = data[i][2];
 			var numinterested = data[i][3];
-			var userinterested = data[i][4];
+			var userinterested = data[i][5];
 			var distance = Math.round(data[i][4] * 100) / 100;
 			
 			var newLocItem = document.createElement('li');
@@ -61,16 +62,23 @@ function listLocationsForEvent(userCoords){
 			link.appendChild(document.createTextNode(name));
 			
 			newLocItem.appendChild(link);
-			
+
 			$("#locas").append(newLocItem);	//add the link before the footer
-			$("html").trigger('create');	//needed to apply jqmobile style changes on dynamic content
+
 		}
+		
+		$("html").trigger('create');
 		$("#locas").listview('refresh')
+		
+		$( "#slider" ).bind("change",  function () {
+			$( "#slider" ).unbind();
+			$('li').remove();
+			listLocationsForEvent(userCoords);
+		});
 
 	}
 	callAjax(url,data,funct);
 }
-
 
 //Show the information for one location
 function showLocationInfo(){
@@ -90,11 +98,11 @@ function showLocationInfo(){
 	paragraph.appendChild(document.createTextNode(address));
 	$("#footer").before(paragraph);
 	
-	//Add a break
+	//Add a linebreak
 	var brk = document.createElement('br');
 	$("#footer").before(brk);
 	
-	//Display interest button
+	//Display interest toggle
 	var slider = document.createElement('select');
 	slider.setAttribute('name','slider');
 	slider.setAttribute('data-theme','c');
@@ -118,6 +126,8 @@ function showLocationInfo(){
 	$("#footer").before(label);
 	$("#footer").before(slider);
 	
+	
+	
 	//Select initial button state
 	if(userinterested == 0){
 		$('#flip-a').val('no');
@@ -126,19 +136,17 @@ function showLocationInfo(){
 		$('#flip-a').val('yes');
 	}
 	
-	//Change handler
+	//Toggle change handler
 	$('#flip-a').change( function(){
 		if($('#flip-a').val() == 'yes'){
 			showInterestInLocation();
 		}
-		
 		else{
 			removeInterestInLocation();
 		}
 	});
 	
 	$("html").trigger('create')
-
 }
 
 //This function allows the user to express interest in a specific location+event, updates the button accordingly

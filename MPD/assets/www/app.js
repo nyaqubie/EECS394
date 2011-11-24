@@ -69,10 +69,6 @@ function listLocationsForEvent(userCoords){
 			var countBubble = document.createElement('span');
 			countBubble.setAttribute('class','ui-li-count');
 			countBubble.appendChild(document.createTextNode(distance + 'mi' + '  |  ' + 'Interest: ' + numinterested));
-			
-			//var distBubble = document.createElement('span');
-			//distBubble.setAttribute('class','ui-li-count');
-			//distBubble.appendChild(document.createTextNode(distance + 'mi'));
 
 			link.appendChild(headerName);
 			link.appendChild(addressP);
@@ -85,7 +81,7 @@ function listLocationsForEvent(userCoords){
 		//$("html").trigger('create');
 		$("#locas").listview('refresh');
 		
-		$( "#slider" ).bind("change",  function () {
+		$( "#slider" ).bind("slidechange",  function () {
 			$( "#slider" ).unbind();
 			$('li').remove();
 			listLocationsForEvent(userCoords);
@@ -140,8 +136,6 @@ function showLocationInfo(){
 	$("#footer").before(label);
 	$("#footer").before(slider);
 	
-	
-	
 	//Select initial button state
 	if(userinterested == 0){
 		$('#flip-a').val('no');
@@ -180,7 +174,6 @@ function removeInterestInLocation(){
 	}
 	callAjax(url,data,funct);
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////
 //Sensor Functions

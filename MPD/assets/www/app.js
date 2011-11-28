@@ -74,9 +74,9 @@ function listLocationsForEvent(userCoords){
 			var addressP = document.createElement('p');
 			addressP.appendChild(document.createTextNode(address));
 		
-			var countBubble = document.createElement('span');
-			countBubble.setAttribute('class','ui-li-count');
-			countBubble.appendChild(document.createTextNode(distance + 'mi' + '  |  ' + 'Interest: ' + numinterested));
+			var countBubble = document.createElement('p');
+			//countBubble.setAttribute('class','ui-li-count');
+			countBubble.appendChild(document.createTextNode(distance + 'mi' + '  |  ' + 'interest: ' + numinterested));
 
 			link.appendChild(headerName);
 			link.appendChild(addressP);

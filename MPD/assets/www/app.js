@@ -48,11 +48,50 @@ function getEvents(){
 	callAjax(url,data,funct);
 }
 
+function updateRadInDatabase(){
+	function populateDB(tx) {
+		var rad = $('#slider').val();
+		tx.executeSql('DROP TABLE RADIUS');
+		tx.executeSql('CREATE TABLE RADIUS (radius)');
+		tx.executeSql('INSERT INTO RADIUS (radius) VALUES ("'+ rad +'")');
+	}
+	function errorCB(err) {
+	}
+	function successCB() {
+	}
+	var db = window.openDatabase("persistent", "1.0", "Persistent Data", 2000);
+	db.transaction(populateDB, errorCB, successCB);
+}
+
+function getRadFromDatabase(){
+	function queryDB(tx) {
+		tx.executeSql('CREATE TABLE IF NOT EXISTS RADIUS (radius)');
+		tx.executeSql('SELECT * FROM RADIUS', [], querySuccess, errorCB);
+	}
+	function querySuccess(tx, results) {
+		//If there's something returned from the query
+		var radius;
+		if (results.rows.length > 0){
+			radius = results.rows.item(0).radius
+		}
+		//If the query was empty, call the GPS function
+		else{
+			radius = 3;
+		}
+		$('#slider').val(radius);
+	}
+	function errorCB(err) {
+	}
+	var db = window.openDatabase("persistent", "1.0", "Persistent Data", 2000);
+	db.transaction(queryDB, errorCB);
+}
+
 //List all of the locations for an event
 function listLocationsForEvent(userCoords){
 	var eventid = getQueryVariable('eventid');
-	var url='http://69.164.198.224/getlocationsinradius';
 	var rad = $('#slider').val();
+
+	var url='http://69.164.198.224/getlocationsinradius';
 	var data={eventid: eventid, radius: rad, geolocation: userCoords, uuid: device.uuid};
 	var funct = function(data, status){
 		for (var i = 0; i<data.length; i++){
@@ -197,10 +236,12 @@ function getGPSLocation() {
 			}
 			//Recent geocoords; don't call GPS, use the database's geocoords
 			else{
+				getRadFromDatabase()
 				listLocationsForEvent(results.rows.item(0).geoloc);
 				$(".ui-slider").bind("vmouseup", function () {
 					$('li').remove();
 					listLocationsForEvent(results.rows.item(0).geoloc);
+					updateRadInDatabase()
 				});
 			}
 		}
@@ -210,7 +251,6 @@ function getGPSLocation() {
 		}
 	}
 	function errorCB(err) {
-		console.log("Error processing SQL: "+err.code);
 	}
 	var db = window.openDatabase("persistent", "1.0", "Persistent Data", 2000);
 	db.transaction(queryDB, errorCB);
@@ -227,7 +267,6 @@ function GPSSuccess(position) {
 		tx.executeSql('INSERT INTO GEOLOC (geoloc, timestamp) VALUES ("'+ position.coords.latitude + ',' + position.coords.longitude+'", "'+position.timestamp+'")');
 	}
 	function errorCB(err) {
-		console.log("Error processing SQL: "+err.code);
 	}
 	function successCB() {
 		//Process the geocoords
@@ -236,10 +275,12 @@ function GPSSuccess(position) {
 		var userCoords = {};
 		userCoords.latitude = userLat;
 		userCoords.longitude = userLong;
+		getRadFromDatabase()
 		listLocationsForEvent(position.coords.latitude + ',' + position.coords.longitude);
 		$(".ui-slider").bind("vmouseup", function () {
 			$('li').remove();
 			listLocationsForEvent(position.coords.latitude + ',' + position.coords.longitude);
+			updateRadInDatabase()
 		});
 	}
 	var db = window.openDatabase("persistent", "1.0", "Persistent Data", 2000);
@@ -249,17 +290,6 @@ function GPSSuccess(position) {
 ///////////////////////////////////////////////////////////////////////////////
 //Data Manipulation or Display Functions
 ///////////////////////////////////////////////////////////////////////////////
-
-//Read the eventid, create the appropriate 'back' button
-function createBackButton(){
-	var eveid = getQueryVariable('eventid');
-	var backlink = document.createElement('a');
-	backlink.setAttribute('href','locations.html?eventid=' + eveid);
-	backlink.setAttribute('rel','external');
-	backlink.setAttribute('data-role','button');
-	backlink.appendChild(document.createTextNode('Back'));
-	$("#events").after(backlink);
-}
 
 //This function analyzes the URL and pulls out the specified variable (POST-style)
 function getQueryVariable(variable) {
@@ -272,9 +302,4 @@ function getQueryVariable(variable) {
 		}
 	} 
 	alert('Query Variable ' + variable + ' not found');
-}
-
-// This function forward index page to events page after northwestern logo disappear
-function move() {
-	window.location = 'events.html'
 }

@@ -9,23 +9,25 @@
 		<script type="text/javascript" src="lib/jquery-1.7.min.js"></script>
 		<script type="text/javascript" src="lib/jquery.mobile-1.0.min.js"></script>	
 		<script type="text/javascript" charset="utf-8" src="app.js"></script>
+		<script type="text/javascript">
+			document.addEventListener("deviceready", getEvents, false);
+		</script>
 	</head> 
 	
 	<body> 
 		<div data-role="page" id="index" data-theme="b">
+		
 			<div data-role="header" id='header' data-theme="a">
 				<h1>Upcoming Events</h1>
 				<a href="events.html" rel='external'>Back</a>
 				<a href="events.html" rel='external'>Home</a>
 			</div>
+			
 			<div data-role="content">
 				<ul id="locas" data-role="listview" data-theme="g" data-filter="true">
 				</ul>
 			</div>
-			<script type="text/javascript">
-				document.addEventListener("deviceready", getEvents, false);
-			</script>
+			
 		</div>
 	</body>
-	
 </html>

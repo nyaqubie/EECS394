@@ -9,8 +9,12 @@
 		<script type="text/javascript" src="lib/jquery-1.7.min.js"></script>
 		<script type="text/javascript" src="lib/jquery.mobile-1.0.min.js"></script>	
 		<script type="text/javascript" charset="utf-8" src="app.js"></script>
-		<script language="JavaScript">
-</script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				document.addEventListener("deviceready", getEvents, false);
+				$('#banner').delay(3000).fadeOut(1500);
+			});
+		</script>
 	</head> 
 	
 	<body> 
@@ -18,26 +22,17 @@
 
             <img style="min-width:100%; min-height:100%;"id="banner" src="banner.jpg" width="300" height="300"/>
 			
-			<script type="text/javascript">
-				$(document).ready(function(){
-					document.addEventListener("deviceready", getEvents, false);
-					$('#banner').delay(3000).fadeOut(1500);
-				});
-			</script>
-			
 			<div data-role="header" id='header' data-theme="a">
 				<h1>Upcoming Events</h1>
 				<a href="events.html" rel='external'>Back</a>
 				<a href="events.html" rel='external'>Home</a>
 			</div>
 			
-			<br />
-			
-			<ul id="locas" data-role="listview" data-theme="g" data-filter="true">
-			</ul>
-
-			<div data-role="footer" data-position="fixed" id="footer" data-theme="a">
+			<div data-role="content">
+				<ul id="locas" data-role="listview" data-theme="g" data-filter="true">
+				</ul>
 			</div>
+
 		</div>
 	</body>
 </html>

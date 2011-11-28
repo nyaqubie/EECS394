@@ -44,7 +44,6 @@ function listLocationsForEvent(userCoords){
 	var eventid = getQueryVariable('eventid');
 	var url='http://69.164.198.224/getlocationsinradius';
 	var rad = $('#slider').val();
-	console.log(rad)
 	var data={eventid: eventid, radius: rad, geolocation: userCoords, uuid: device.uuid};
 	var funct = function(data, status){
 		for (var i = 0; i<data.length; i++){
@@ -78,14 +77,8 @@ function listLocationsForEvent(userCoords){
 			$("#locas").append(newLocItem);
 		}
 		
-		//$("html").trigger('create');
 		$("#locas").listview('refresh');
-		
-		$( "#slider" ).bind("slidechange",  function () {
-			$( "#slider" ).unbind();
-			$('li').remove();
-			listLocationsForEvent(userCoords);
-		});
+
 	}
 	callAjax(url,data,funct);
 }
@@ -194,6 +187,10 @@ function GPSSuccess(position) {
 	userCoords.latitude = userLat;
 	userCoords.longitude = userLong;
 	listLocationsForEvent(position.coords.latitude + ',' + position.coords.longitude);
+	$(".ui-slider").bind("vmouseup", function () {
+		$('li').remove();
+		listLocationsForEvent(position.coords.latitude + ',' + position.coords.longitude);
+	});
 }
 
 ///////////////////////////////////////////////////////////////////////////////

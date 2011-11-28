@@ -103,16 +103,16 @@ function showLocationInfo(){
 	//Display name
 	var header = document.createElement('h2');	
 	header.appendChild(document.createTextNode(name));
-	$("#footer").before(header);
+	$("#content").append(header);
 	
 	//Display address
 	var paragraph = document.createElement('p');
 	paragraph.appendChild(document.createTextNode(address));
-	$("#footer").before(paragraph);
+	$("#content").append(paragraph);
 	
 	//Add a linebreak
 	var brk = document.createElement('br');
-	$("#footer").before(brk);
+	$("#content").append(brk);
 	
 	//Display interest toggle
 	var slider = document.createElement('select');
@@ -135,8 +135,8 @@ function showLocationInfo(){
 	label.appendChild(document.createTextNode('Interested?'));
 	label.setAttribute('for','flip-a');
 	
-	$("#footer").before(label);
-	$("#footer").before(slider);
+	$("#content").append(label);
+	$("#content").append(slider);
 	
 	//Select initial button state
 	if(userinterested == 0){

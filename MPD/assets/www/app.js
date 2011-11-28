@@ -26,12 +26,21 @@ function getEvents(){
 		for (var i = 0; i<data.length; i++){
 			var newLocItem = document.createElement('li');
 			var link = document.createElement('a');
+			
 			link.setAttribute('href','locations.html?eventid='+data[i][0]);
 			link.setAttribute('rel','external');
-			link.appendChild(document.createTextNode(data[i][1] + " " + data[i][2]));
+			
+			var name = document.createElement('h2');
+			name.appendChild(document.createTextNode(data[i][1]));
+			
+			var date = document.createElement('p');
+			date.appendChild(document.createTextNode(data[i][2]));
+			
+			link.appendChild(name);
+			link.appendChild(date);
+			
 			newLocItem.appendChild(link);
 			$("#locas").append(newLocItem);	//add the link before the footer
-			$("html").trigger('create');	//needed to apply jqmobile style changes on dynamic content
 		}
 		$("#locas").listview('refresh')
 

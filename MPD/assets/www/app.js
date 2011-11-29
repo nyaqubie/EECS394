@@ -5,7 +5,6 @@
 function callAjax(url, data, funct){
 	$.ajax({
 		url: url,
-		//cache:false,
 		type: 'GET',
 		dataType: 'jsonp',
 		data: data,
@@ -48,48 +47,15 @@ function getEvents(){
 	callAjax(url,data,funct);
 }
 
-function updateRadInDatabase(){
-	function populateDB(tx) {
-		var rad = $('#slider').val();
-		tx.executeSql('DROP TABLE RADIUS');
-		tx.executeSql('CREATE TABLE RADIUS (radius)');
-		tx.executeSql('INSERT INTO RADIUS (radius) VALUES ("'+ rad +'")');
-	}
-	function errorCB(err) {
-	}
-	function successCB() {
-	}
-	var db = window.openDatabase("persistent", "1.0", "Persistent Data", 2000);
-	db.transaction(populateDB, errorCB, successCB);
-}
-
-function getRadFromDatabase(){
-	function queryDB(tx) {
-		tx.executeSql('CREATE TABLE IF NOT EXISTS RADIUS (radius)');
-		tx.executeSql('SELECT * FROM RADIUS', [], querySuccess, errorCB);
-	}
-	function querySuccess(tx, results) {
-		//If there's something returned from the query
-		var radius;
-		if (results.rows.length > 0){
-			radius = results.rows.item(0).radius
-		}
-		//If the query was empty, call the GPS function
-		else{
-			radius = 3;
-		}
-		$('#slider').val(radius);
-	}
-	function errorCB(err) {
-	}
-	var db = window.openDatabase("persistent", "1.0", "Persistent Data", 2000);
-	db.transaction(queryDB, errorCB);
-}
-
 //List all of the locations for an event
 function listLocationsForEvent(userCoords){
 	var eventid = getQueryVariable('eventid');
-	var rad = $('#slider').val();
+	var rad = window.localStorage.getItem("radius");
+	if (rad == null){
+		rad = 3;
+	}
+	$('#slider').val(rad)
+	$('#slider').slider('refresh')
 
 	var url='http://69.164.198.224/getlocationsinradius';
 	var data={eventid: eventid, radius: rad, geolocation: userCoords, uuid: device.uuid};
@@ -114,7 +80,6 @@ function listLocationsForEvent(userCoords){
 			addressP.appendChild(document.createTextNode(address));
 		
 			var countBubble = document.createElement('p');
-			//countBubble.setAttribute('class','ui-li-count');
 			countBubble.appendChild(document.createTextNode(distance + 'mi' + '  |  ' + 'interest: ' + numinterested));
 
 			link.appendChild(headerName);
@@ -223,68 +188,45 @@ function removeInterestInLocation(){
 //Get the GPS location; if successful then list the event locations (using the appropriate userCoords)
 function getGPSLocation() {	
 	//Get the last GPS coordinates from the database
-	function queryDB(tx) {
-		tx.executeSql('CREATE TABLE IF NOT EXISTS GEOLOC (geoloc, timestamp)');
-		tx.executeSql('SELECT * FROM GEOLOC', [], querySuccess, errorCB);
-	}
-	function querySuccess(tx, results) {
-		//If there's something returned from the query
-		if (results.rows.length > 0){
-			//Geocoords is over 30 seconds old (too old); call the GPS function
-			if ((new Date().getTime()) - results.rows.item(0).timestamp > 30*1000){
-				navigator.geolocation.getCurrentPosition(GPSSuccess, GPSError, {enableHighAccuracy: true});
-			}
-			//Recent geocoords; don't call GPS, use the database's geocoords
-			else{
-				getRadFromDatabase()
-				listLocationsForEvent(results.rows.item(0).geoloc);
-				$(".ui-slider").bind("vmouseup", function () {
-					$('li').remove();
-					listLocationsForEvent(results.rows.item(0).geoloc);
-					updateRadInDatabase()
-				});
-			}
-		}
-		//If the query was empty, call the GPS function
-		else{
+	var timestamp = window.localStorage.getItem("timestamp");
+	var gpsCoords = window.localStorage.getItem("gpsCoords");
+
+	if (gpsCoords != null){
+		//Geocoords is over 30 seconds old (too old); call the GPS function
+		if ((new Date().getTime()) - timestamp > 30*1000){
 			navigator.geolocation.getCurrentPosition(GPSSuccess, GPSError, {enableHighAccuracy: true});
 		}
+		//Recent geocoords; don't call GPS, use the database's geocoords
+		else{
+			var posString = window.localStorage.getItem("gpsCoords");
+			listLocationsForEvent(posString);
+			bindVMouse(posString)
+		}
 	}
-	function errorCB(err) {
+	//If the gpsCoords was empty, call the GPS function
+	else{
+		navigator.geolocation.getCurrentPosition(GPSSuccess, GPSError, {enableHighAccuracy: true});
 	}
-	var db = window.openDatabase("persistent", "1.0", "Persistent Data", 2000);
-	db.transaction(queryDB, errorCB);
 }
 function GPSError(error) {
     alert('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');
 }
 function GPSSuccess(position) {
-	//Update database with new values
-	function populateDB(tx) {
-		tx.executeSql('DROP TABLE GEOLOC');
-		tx.executeSql('CREATE TABLE GEOLOC (geoloc, timestamp)');
-		tx.executeSql('INSERT INTO GEOLOC (geoloc, timestamp) VALUES ("'+ position.coords.latitude + ',' + position.coords.longitude+'", "'+position.timestamp+'")');
-	}
-	function errorCB(err) {
-	}
-	function successCB() {
-		//Process the geocoords
-		var userLat = position.coords.latitude;
-		var userLong = position.coords.longitude;
-		var userCoords = {};
-		userCoords.latitude = userLat;
-		userCoords.longitude = userLong;
-		getRadFromDatabase()
-		listLocationsForEvent(position.coords.latitude + ',' + position.coords.longitude);
-		$(".ui-slider").bind("vmouseup", function () {
-			$('li').remove();
-			listLocationsForEvent(position.coords.latitude + ',' + position.coords.longitude);
-			updateRadInDatabase()
-		});
-	}
-	var db = window.openDatabase("persistent", "1.0", "Persistent Data", 2000);
-	db.transaction(populateDB, errorCB, successCB);
+	window.localStorage.setItem("timestamp", new Date().getTime());
+	window.localStorage.setItem("gpsCoords", position.coords.latitude + ',' + position.coords.longitude);
+	var posString=position.coords.latitude + ',' + position.coords.longitude
+	listLocationsForEvent(posString);
+	bindVMouse(posString)
+}
+
+function bindVMouse(posString){
+	$(".ui-slider").bind("vmouseup", function () {
+		var rad = $('#slider').val();
+		window.localStorage.setItem("radius", rad);
+		$('li').remove();
+		listLocationsForEvent(posString);
+	});
 }
 
 ///////////////////////////////////////////////////////////////////////////////

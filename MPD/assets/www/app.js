@@ -233,6 +233,10 @@ function bindVMouse(posString){
 //Data Manipulation or Display Functions
 ///////////////////////////////////////////////////////////////////////////////
 
+function createBackButton(){
+
+}
+
 //This function analyzes the URL and pulls out the specified variable (POST-style)
 function getQueryVariable(variable) {
 	var query = window.location.search.substring(1);

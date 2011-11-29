@@ -234,7 +234,8 @@ function bindVMouse(posString){
 ///////////////////////////////////////////////////////////////////////////////
 
 function createBackButton(){
-
+	var eveid = getQueryVariable('eventid');
+	$('#back').attr('href','locations.html?eventid=' + eveid);
 }
 
 //This function analyzes the URL and pulls out the specified variable (POST-style)

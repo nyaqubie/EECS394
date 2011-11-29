@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html> 
 	<head> 
 		<title>Event Tracker</title> 
@@ -10,7 +10,7 @@
 		<script type="text/javascript" src="lib/jquery.mobile-1.0.min.js"></script>	
 		<script type="text/javascript" charset="utf-8" src="app.js"></script>
 		<script type="text/javascript">
-			createBackButton();
+			document.addEventListener("deviceready", createBackButton, false);
 			document.addEventListener("deviceready", showLocationInfo, false);
 		</script>
 	</head>
@@ -19,8 +19,9 @@
 		<div data-role="page" id="index" data-theme="b">
 			<div data-role="header" id='header' data-theme="a">
 				<h1 id='events'>Location</h1>
-				<a data-rel="back" rel='external'>Back</a>
+				<a id = 'back' rel='external'>Back</a>
 				<a href="events.html" rel='external'>Home</a>
+				
 			</div>
 			
 			<div id = 'content' data-role="content">

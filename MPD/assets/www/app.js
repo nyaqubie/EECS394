@@ -188,6 +188,12 @@ function removeInterestInLocation(){
 //Get the GPS location; if successful then list the event locations (using the appropriate userCoords)
 function getGPSLocation() {	
 	//Get the last GPS coordinates from the database
+	var rad = window.localStorage.getItem("radius");
+	if (rad == null){
+		rad = 3;
+	}
+	$('#slider').val(rad)
+	$('#slider').slider('refresh')
 	var timestamp = window.localStorage.getItem("timestamp");
 	var gpsCoords = window.localStorage.getItem("gpsCoords");
 

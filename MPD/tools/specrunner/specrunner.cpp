@@ -113,7 +113,7 @@ void HeadlessSpecRunner::timerEvent(QTimerEvent *event)
         return;
     }
 
-    ++m_runs;
+    //++m_runs;
     if (m_runs > 20) {
         std::cout << "WARNING: too many runs and the test is still not finished!" << std::endl;
         QApplication::instance()->exit(1);

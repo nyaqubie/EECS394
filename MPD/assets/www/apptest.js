@@ -3,7 +3,7 @@ jasmine.getFixtures().fixturesPath = '.';
 describe("index.html", function() {
 	
 	it("should have a back button which returns to 'events.html'", function() {
-		var fixtureUrl = "locations.html";
+		var fixtureUrl = "index.html";
 		jasmine.getFixtures().load(fixtureUrl);
 		waits(100)
 
@@ -50,14 +50,13 @@ describe("index.html", function() {
 		runs( function () {
 			expect($('#banner').css('display')).toEqual('none')
 		});
-	});	 	
-}); 
+	});	
+});
 
 describe("events.html", function() {
 
-
 	it("should have a back button which returns to 'events.html'", function() {
-		var fixtureUrl = "locations.html";
+		var fixtureUrl = "events.html";
 		jasmine.getFixtures().load(fixtureUrl);
 		waits(100)
 
@@ -100,6 +99,19 @@ describe("locations.html", function() {
 		});
 	});
 
+	it("should load the events properly", function() {
+		var fixtureUrl = "locations.html";
+		jasmine.getFixtures().load(fixtureUrl);
+		waits(100)
+		
+		runs( function () {
+			expect($('li').size()).toEqual(0)
+			var data = [[38, "Northwestern vs. Mississippi Valley State", "12/2/2011"],[38, "Northwestern vs. Mississippi Valley State", "12/2/2011"]]
+			getEventsFunct(data)
+			expect($('li').size()).toBeGreaterThan(0)
+		});
+	});
+	
 }); 
 
 describe("location.html", function() {

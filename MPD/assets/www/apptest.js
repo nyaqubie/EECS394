@@ -1,30 +1,40 @@
+jasmine.getFixtures().fixturesPath = '.';
+
 describe("index.html", function() {
 	beforeEach(function() {
-		jasmine.getFixtures().fixturesPath = '.';
 		var fixtureUrl = "index.html";
 		jasmine.getFixtures().load(fixtureUrl);
-		//console.log(fixtureContent)
-		//console.log(jasmine.getFixtures().containerId)
-		//fixturesContainer().html()
 	});
 	
-	it("should have a visible banner when the page loads", function() {
+	it("should have a visible banner initially, and no visible banner after the 5 seconds", function() {
 	
 		runs( function () {
-			console.log($('#banner'))
+			expect($('#banner').css('display')).toEqual('inline')
+			fadeBanner();
 		});
 			
 		waits(5000)
 		 
 		runs( function () {
-			console.log($('img'))
+			expect($('#banner').css('display')).toEqual('none')
 		});
-	});	 
-		
-	//$('#banner').delay(3000).fadeOut(1500);
-		
+	});	 	
+	
+	it("should load at least 1 event in the background", function() {
+/* 		runs( function () {
+			expect($('li').size()).toEqual(0)
+			spyOn(window, "funct").andCallFake(altfunct);
+			getEvents()
+		});
+		waits(1000)
+		runs( function () {
+			expect($('li').size()).toBeGreaterThan(0)
+		}); */
+	});
 });
 	
+	
+
 /* 	beforeEach(function() {	
 		var altQuery = function(){
 			return '11';

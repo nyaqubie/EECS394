@@ -17,8 +17,13 @@ function callAjax(url, data, funct){
 	});
 }
 
-function bannerFade(){
+function createIndex(){
+	fadeBanner();
+	getEvents();
+}
 
+function fadeBanner(){
+	$('#banner').delay(3000).fadeOut(1500);
 }
 
 //List all of the available upcoming events

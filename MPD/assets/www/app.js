@@ -17,6 +17,10 @@ function callAjax(url, data, funct){
 	});
 }
 
+function bannerFade(){
+
+}
+
 //List all of the available upcoming events
 function getEvents(){
 	var url = 'http://69.164.198.224/getevents';

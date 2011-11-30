@@ -1,5 +1,31 @@
-describe("createBackButton tests", function() {
-	beforeEach(function() {	
+describe("index.html", function() {
+	beforeEach(function() {
+		jasmine.getFixtures().fixturesPath = '.';
+		var fixtureUrl = "index.html";
+		jasmine.getFixtures().load(fixtureUrl);
+		//console.log(fixtureContent)
+		//console.log(jasmine.getFixtures().containerId)
+		//fixturesContainer().html()
+	});
+	
+	it("should have a visible banner when the page loads", function() {
+	
+		runs( function () {
+			console.log($('#banner'))
+		});
+			
+		waits(5000)
+		 
+		runs( function () {
+			console.log($('img'))
+		});
+	});	 
+		
+	//$('#banner').delay(3000).fadeOut(1500);
+		
+});
+	
+/* 	beforeEach(function() {	
 		var altQuery = function(){
 			return '11';
 		}
@@ -21,8 +47,7 @@ describe("createBackButton tests", function() {
 	
 	afterEach(function() {
 		$('#testarea').remove()
-	});
-});
+
 
 /*describe("distanceBetweenCoords tests", function(){
 	it("should return '3265' when geocoords '12,14' and '-32,-4' are given", function() {

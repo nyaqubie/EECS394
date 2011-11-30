@@ -6,7 +6,7 @@ describe("index.html", function() {
 		jasmine.getFixtures().load(fixtureUrl);
 	});
 	
-	it("should have a visible banner initially, and no visible banner after the 5 seconds", function() {
+ 	it("should have a visible banner initially, and no visible banner after the 5 seconds", function() {
 	
 		runs( function () {
 			expect($('#banner').css('display')).toEqual('inline')
@@ -18,22 +18,28 @@ describe("index.html", function() {
 		runs( function () {
 			expect($('#banner').css('display')).toEqual('none')
 		});
-	});	 	
+	});	 	 
 	
-	it("should load at least 1 event in the background", function() {
-/* 		runs( function () {
-			expect($('li').size()).toEqual(0)
-			spyOn(window, "funct").andCallFake(altfunct);
-			getEvents()
-		});
-		waits(1000)
+	it("should load events in the background", function() {
+		waits(100)
 		runs( function () {
+			expect($('li').size()).toEqual(0)
+			var data = [[38, "Northwestern vs. Mississippi Valley State", "12/2/2011"],[38, "Northwestern vs. Mississippi Valley State", "12/2/2011"]]
+			getEventsFunct(data)
 			expect($('li').size()).toBeGreaterThan(0)
-		}); */
+		});
 	});
 });
 	
-	
+describe("events.html", function() {
+	beforeEach(function() {
+		var fixtureUrl = "events.html";
+		jasmine.getFixtures().load(fixtureUrl);
+	});
+	it("should .....", function() {
+		
+	});
+});
 
 /* 	beforeEach(function() {	
 		var altQuery = function(){

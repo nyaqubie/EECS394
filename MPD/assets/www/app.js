@@ -30,30 +30,31 @@ function fadeBanner(){
 function getEvents(){
 	var url = 'http://69.164.198.224/getevents';
 	var data = '';
-	var funct = function (data, status){
-		for (var i = 0; i<data.length; i++){
-			var newLocItem = document.createElement('li');
-			var link = document.createElement('a');
-			
-			link.setAttribute('href','locations.html?eventid='+data[i][0]);
-			link.setAttribute('rel','external');
-			
-			var name = document.createElement('h2');
-			name.appendChild(document.createTextNode(data[i][1]));
-			
-			var date = document.createElement('p');
-			date.appendChild(document.createTextNode(data[i][2]));
-			
-			link.appendChild(name);
-			link.appendChild(date);
-			
-			newLocItem.appendChild(link);
-			$("#locas").append(newLocItem);	//add the link before the footer
-		}
-		$("#locas").listview('refresh')
 
-	};
-	callAjax(url,data,funct);
+	callAjax(url,data,getEventsFunct);
+}
+
+function getEventsFunct(data){
+	for (var i = 0; i<data.length; i++){
+		var newLocItem = document.createElement('li');
+		var link = document.createElement('a');
+		
+		link.setAttribute('href','locations.html?eventid='+data[i][0]);
+		link.setAttribute('rel','external');
+		
+		var name = document.createElement('h2');
+		name.appendChild(document.createTextNode(data[i][1]));
+		
+		var date = document.createElement('p');
+		date.appendChild(document.createTextNode(data[i][2]));
+		
+		link.appendChild(name);
+		link.appendChild(date);
+		
+		newLocItem.appendChild(link);
+		$("#locas").append(newLocItem);	//add the link before the footer
+	}
+	$("#locas").listview('refresh')
 }
 
 //List all of the locations for an event

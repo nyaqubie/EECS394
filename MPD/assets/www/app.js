@@ -121,7 +121,7 @@ function showLocationInfo(){
 	//Display interest toggle
 	var slider = document.createElement('select');
 	slider.setAttribute('name','slider');
-	slider.setAttribute('data-theme','c');
+	slider.setAttribute('data-theme','a');
 	slider.setAttribute('id','flip-a');
 	slider.setAttribute('data-role','slider');
 	

@@ -12,7 +12,7 @@ function callAjax(url, data, funct){
 		timeout: 10000,
 		success: funct,
 		error: function(){
-			alert('Ajax call failed')
+			alert('Connection not available.')
 		}
 	});
 }

@@ -5,7 +5,7 @@ describe("index.html", function() {
 		var fixtureUrl = "index.html";
 		jasmine.getFixtures().load(fixtureUrl);
 		waits(100)
-	})
+	});
 	
 	it("should have a back button which returns to 'events.html'", function() {
 		expect($('#back').attr('href')).toEqual('events.html');
@@ -28,7 +28,7 @@ describe("index.html", function() {
 			fadeBanner();
 		});
 
-		waits(5000)
+		waits(6000)
 
 		runs( function () {
 			expect($('#banner').css('display')).toEqual('none')
@@ -41,7 +41,7 @@ describe("events.html", function() {
 		var fixtureUrl = "events.html";
 		jasmine.getFixtures().load(fixtureUrl);
 		waits(100)
-	})
+	});
 
 	it("should have a back button which returns to 'events.html'", function() {
 		expect($('#back').attr('href')).toEqual('events.html');
@@ -50,15 +50,14 @@ describe("events.html", function() {
 	it("should have a home button which returns you to 'index.html'", function() {
 		expect($('#home').attr('href')).toEqual('index.html');
 	});
-
-}); 
+});
 
 describe("locations.html", function() {
 	beforeEach(function() {
 		var fixtureUrl = "locations.html";
 		jasmine.getFixtures().load(fixtureUrl);
 		waits(100)
-	})
+	});
 
 	it("should have a back button which returns to 'events.html'", function() {
 		expect($('#back').attr('href')).toEqual('events.html');
@@ -74,7 +73,6 @@ describe("locations.html", function() {
 		getEventsFunct(data)
 		expect($('li').size()).toBeGreaterThan(0)
 	});
-	
 }); 
 
 describe("location.html", function() {
@@ -82,7 +80,7 @@ describe("location.html", function() {
 		var fixtureUrl = "location.html";
 		jasmine.getFixtures().load(fixtureUrl);
 		waits(100)
-	})
+	});
 	it("should have a back button which returns to the correct 'locations.html' page", function() {
 		var altQuery = function(){
 			return '11';
@@ -95,5 +93,4 @@ describe("location.html", function() {
 	it("should have a home button which returns you to 'index.html'", function() {
 			expect($('#home').attr('href')).toEqual('index.html');
 	});
-	
 });

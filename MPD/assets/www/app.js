@@ -39,7 +39,7 @@ function getEventsFunct(data){
 		var newLocItem = document.createElement('li');
 		var link = document.createElement('a');
 		
-		link.setAttribute('href','locations.html?eventid='+data[i][0]);
+		link.setAttribute('href','locations.html?eventid='+data[i][0]+'&eventname='+data[i][1]);
 		link.setAttribute('rel','external');
 		
 		var name = document.createElement('h2');
@@ -80,7 +80,7 @@ function listLocationsForEvent(userCoords){
 			var newLocItem = document.createElement('li');
 			var link = document.createElement('a');
 			
-			link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0] + '&numberinterested=' + numinterested + '&address=' + address + '&name=' + name + '&userinterested=' + userinterested);
+			link.setAttribute('href','location.html?eventid=' + eventid + '&locationid=' + data[i][0] + '&numberinterested=' + numinterested + '&address=' + address + '&name=' + name + '&userinterested=' + userinterested + '&eventname='+getQueryVariable('eventname'));
 			link.setAttribute('rel','external');
 			
 			var headerName = document.createElement('h2');
@@ -197,6 +197,8 @@ function removeInterestInLocation(){
 
 //Get the GPS location; if successful then list the event locations (using the appropriate userCoords)
 function getGPSLocation() {	
+	var eventname = getQueryVariable('eventname');
+	$('#eventname').append(document.createTextNode(unescape(eventname)));
 	//Get the last GPS coordinates from the database
 	var rad = window.localStorage.getItem("radius");
 	if (rad == null){
@@ -251,7 +253,7 @@ function bindVMouse(posString){
 
 function createBackButton(){
 	var eveid = getQueryVariable('eventid');
-	$('#back').attr('href','locations.html?eventid=' + eveid);
+	$('#back').attr('href','locations.html?eventid=' + eveid + '&eventname='+getQueryVariable('eventname'));
 }
 
 //This function analyzes the URL and pulls out the specified variable (POST-style)

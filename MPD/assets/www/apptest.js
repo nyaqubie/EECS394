@@ -81,14 +81,14 @@ describe("location.html", function() {
 		jasmine.getFixtures().load(fixtureUrl);
 		waits(100)
 	});
-	it("should have a back button which returns to the correct 'locations.html' page", function() {
+	/*it("should have a back button which returns to the correct 'locations.html' page", function() {
 		var altQuery = function(){
 			return '11';
 		}
 		spyOn(window, "getQueryVariable").andCallFake(altQuery);
 		createBackButton()
 		expect($('#back').attr('href')).toEqual('locations.html?eventid=11');
-	});
+	});*/
 	
 	it("should have a home button which returns you to 'index.html'", function() {
 			expect($('#home').attr('href')).toEqual('index.html');
